@@ -1,19 +1,12 @@
-<<<<<<< Updated upstream
-[gd_scene format=3 uid="uid://1yytaov8vtqs"]
+[gd_scene format=3 uid="uid://ce23laenr7xll"]
 
-[ext_resource type="Script" uid="uid://cmxbwdcr7080v" path="res://scenes/water_point.gd" id="1_hoh84"]
-=======
-[gd_scene format=3 uid="uid://bpyhp48o4vrbc"]
->>>>>>> Stashed changes
+[ext_resource type="Script" path="res://scenes/water_point.gd" id="1_hoh84"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ao73i"]
 
 [node name="water_point" type="Area2D" unique_id=1561586156]
-<<<<<<< Updated upstream
 script = ExtResource("1_hoh84")
 springConst = 0.015
-=======
->>>>>>> Stashed changes
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1902335155]
 shape = SubResource("CircleShape2D_ao73i")

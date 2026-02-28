@@ -9,7 +9,8 @@ extends Node2D
 @export var springConst: float = 0.0015
 @export var dampConst: float = 0.03
 
-@onready var polygon_2d: Polygon2D = $Polygon2D
+@onready var waterPoly: Polygon2D = $Water
+
 
 var springs: Array = []
 var passes: int = 8
@@ -66,5 +67,4 @@ func drawWater() -> void:
 	waterPolyPoints.append(Vector2(surfacePoint[surfacePoint.size() - 1].x, targetHeight + waterDepth))
 	waterPolyPoints.append(Vector2(surfacePoint[0].x, targetHeight + waterDepth))
 	
-	polygon_2d.set_polygon(waterPolyPoints)
-	
+	waterPoly.set_polygon(waterPolyPoints)

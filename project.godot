@@ -11,14 +11,9 @@ config_version=5
 [application]
 
 config/name="campfire"
-run/main_scene="uid://dgrc6g1qf4oi5"
+run/main_scene="uid://btp34snx4867x"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
-
-[debug]
-
-gdscript/warnings/untyped_declaration=1
-gdscript/warnings/inferred_declaration=1
 
 [dotnet]
 

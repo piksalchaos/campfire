@@ -1,18 +1,12 @@
-<<<<<<< Updated upstream
-[gd_scene format=3 uid="uid://dgrc6g1qf4oi5"]
+[gd_scene format=3 uid="uid://btp34snx4867x"]
 
-[ext_resource type="Script" uid="uid://c30gj15u87e5o" path="res://scenes/water_line.gd" id="1_6sbtt"]
-[ext_resource type="PackedScene" uid="uid://1yytaov8vtqs" path="res://scenes/water_point.tscn" id="2_jp3bm"]
+[ext_resource type="Script" uid="uid://ccl8bdg864ly" path="res://water_line.gd" id="1_6sbtt"]
+[ext_resource type="PackedScene" uid="uid://ce23laenr7xll" path="res://scenes/water_point.tscn" id="2_jp3bm"]
 
-[node name="WaterLine" type="Node2D" unique_id=847125539]
+[node name="WaterLine" type="Node2D" unique_id=1682058558]
 script = ExtResource("1_6sbtt")
 water_point = ExtResource("2_jp3bm")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1649639249]
+[node name="Water" type="Polygon2D" parent="." unique_id=1796528302]
 
-[node name="Polygon2D" type="Polygon2D" parent="." unique_id=448836198]
-=======
-[gd_scene format=3 uid="uid://btp34snx4867x"]
-
-[node name="WaterLine" type="Node2D" unique_id=847125539]
->>>>>>> Stashed changes
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1011957028]
