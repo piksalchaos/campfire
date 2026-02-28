@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://7ufbquqts1m1"]
 
 [ext_resource type="PackedScene" uid="uid://b1kqhr7lj2yhe" path="res://scenes/fish.tscn" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://btp34snx4867x" path="res://scenes/Water Animation/water_line.tscn" id="2_0wfyh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o5qli"]
 size = Vector2(1338, 467)
@@ -16,15 +17,6 @@ position = Vector2(659, 385.5)
 shape = SubResource("RectangleShape2D_o5qli")
 
 [node name="ColorRect" type="ColorRect" parent="World/Surface" unique_id=1081598830]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -10.0
-offset_top = 152.0
-offset_right = 1328.0
-offset_bottom = 616.0
-grow_horizontal = 2
-color = Color(0, 0.72156864, 0.8745098, 0.2)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="World" unique_id=856581126]
 
@@ -41,6 +33,26 @@ polygon = PackedVector2Array(6932, -814, 10799, -2770, 13339, -7199, 14081, -111
 [node name="Fish" parent="World" unique_id=1033757198 instance=ExtResource("1_o5qli")]
 position = Vector2(234, 217)
 
-[node name="Camera2D" type="Camera2D" parent="World/Fish" unique_id=1741744691]
+[node name="Camera2D2" type="Camera2D" parent="World/Fish" unique_id=1741744691]
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
+
+[node name="Surface" type="Area2D" parent="." unique_id=2112561001]
+
+[node name="ColorRect" type="ColorRect" parent="Surface" unique_id=1212646194]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -10.0
+offset_top = 152.0
+offset_right = 1328.0
+offset_bottom = 616.0
+grow_horizontal = 2
+color = Color(0, 0.72156864, 0.8745098, 0.2)
+
+[node name="WaterLine" parent="." unique_id=1682058558 instance=ExtResource("2_0wfyh")]
+position = Vector2(0, 162)
+waterDepth = 300.0
+amountWaterNode = 100
+targetHeight = 0.0
