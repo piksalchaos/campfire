@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://7ufbquqts1m1"]
+
+[ext_resource type="PackedScene" uid="uid://b1kqhr7lj2yhe" path="res://scenes/fish.tscn" id="1_o5qli"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_o5qli"]
+
+[node name="Main" type="Node2D" unique_id=1149912898]
+
+[node name="Fish" parent="." unique_id=1033757198 instance=ExtResource("1_o5qli")]
+position = Vector2(234, 217)
+
+[node name="Surface" type="Area2D" parent="." unique_id=289272672]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Surface" unique_id=1966144368]
+position = Vector2(0, 162)
+shape = SubResource("WorldBoundaryShape2D_o5qli")
+
+[node name="ColorRect" type="ColorRect" parent="Surface" unique_id=1081598830]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_top = 162.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+color = Color(0, 0.72156864, 0.8745098, 0.2)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1741744691]
+offset = Vector2(288, 162)
+zoom = Vector2(2, 2)
