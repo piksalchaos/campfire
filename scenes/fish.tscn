@@ -6,16 +6,22 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8g0i4"]
 height = 45.0
 
-[node name="Fish" type="Area2D" unique_id=1961602577]
+[node name="Fish" type="CharacterBody2D" unique_id=516323297]
 script = ExtResource("1_8g0i4")
 
 [node name="TempSprite2D" type="Sprite2D" parent="." unique_id=218355167]
-rotation = 0.19674495
 texture = ExtResource("1_n6yr6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1342683776]
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_8g0i4")
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
-[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[node name="SurfaceDetector" type="Area2D" parent="." unique_id=671967967]
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SurfaceDetector" unique_id=1250885138]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_8g0i4")
+
+[connection signal="area_entered" from="SurfaceDetector" to="." method="_on_surface_detector_area_entered"]
+[connection signal="area_exited" from="SurfaceDetector" to="." method="_on_surface_detector_area_exited"]

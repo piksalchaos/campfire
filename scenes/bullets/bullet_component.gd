@@ -1,0 +1,1 @@
+class_name BulletComponent extends Area2D

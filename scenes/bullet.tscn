@@ -1,8 +1,0 @@
-[gd_scene format=3 uid="uid://ctolyf10sfajb"]
-
-[ext_resource type="Script" uid="uid://olkh1etcok7c" path="res://scenes/bullet.gd" id="1_mkf8s"]
-
-[node name="Bullet" type="Area2D" unique_id=327313520]
-collision_layer = 2
-collision_mask = 0
-script = ExtResource("1_mkf8s")

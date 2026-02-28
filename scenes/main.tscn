@@ -2,29 +2,45 @@
 
 [ext_resource type="PackedScene" uid="uid://b1kqhr7lj2yhe" path="res://scenes/fish.tscn" id="1_o5qli"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_o5qli"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5qli"]
+size = Vector2(1338, 467)
 
 [node name="Main" type="Node2D" unique_id=1149912898]
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1741744691]
-offset = Vector2(288, 162)
-zoom = Vector2(2, 2)
+[node name="World" type="Node2D" parent="." unique_id=1361869755]
 
-[node name="Fish" parent="." unique_id=1033757198 instance=ExtResource("1_o5qli")]
-position = Vector2(234, 217)
+[node name="Surface" type="Area2D" parent="World" unique_id=289272672]
 
-[node name="Surface" type="Area2D" parent="." unique_id=289272672]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Surface" unique_id=1966144368]
+position = Vector2(659, 385.5)
+shape = SubResource("RectangleShape2D_o5qli")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Surface" unique_id=1966144368]
-position = Vector2(0, 162)
-shape = SubResource("WorldBoundaryShape2D_o5qli")
-
-[node name="ColorRect" type="ColorRect" parent="Surface" unique_id=1081598830]
+[node name="ColorRect" type="ColorRect" parent="World/Surface" unique_id=1081598830]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_top = 162.0
-offset_right = 576.0
-offset_bottom = 324.0
+offset_left = -10.0
+offset_top = 152.0
+offset_right = 1328.0
+offset_bottom = 616.0
 grow_horizontal = 2
 color = Color(0, 0.72156864, 0.8745098, 0.2)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="World" unique_id=856581126]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="World/StaticBody2D" unique_id=1964933423]
+polygon = PackedVector2Array(-64, -279, -81, 688, 3281, 779, 10711, 566, 10690, -1909, 6106, -1427, 4474, -625, 4214, -326, 3588, -214, 3324, -435, 2960, -446, 2148, 25, 1258, 309, 998, 446, 534, 504, 77, 458, -14, 197, -14, 197)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="World" unique_id=546983261]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="World/StaticBody2D2" unique_id=380443649]
+position = Vector2(5496, -672)
+scale = Vector2(0.28717092, 0.34158587)
+polygon = PackedVector2Array(6932, -814, 10799, -2770, 13339, -7199, 14081, -11155, 8731, -15404, 14643, -11986, 16419, -15763, 17746, -11762, 24063, -15943, 20264, -10886, 18128, -7378, 18960, -3691, 21096, 244)
+
+[node name="Fish" parent="World" unique_id=1033757198 instance=ExtResource("1_o5qli")]
+position = Vector2(234, 217)
+
+[node name="Camera2D" type="Camera2D" parent="World/Fish" unique_id=1741744691]
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true

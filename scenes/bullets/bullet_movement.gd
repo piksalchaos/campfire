@@ -1,5 +1,4 @@
-class_name Bullet extends Area2D
-
+extends Node2D 
 @export var speed: float = 300.0
 @export var x_to_destroy_at: float = -100
 
