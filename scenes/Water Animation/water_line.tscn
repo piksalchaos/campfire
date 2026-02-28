@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://btp34snx4867x"]
+
+[ext_resource type="Script" uid="uid://ccl8bdg864ly" path="res://water_line.gd" id="1_6sbtt"]
+[ext_resource type="PackedScene" uid="uid://ce23laenr7xll" path="res://scenes/Water Animation/water_point.tscn" id="2_jp3bm"]
+[ext_resource type="Shader" uid="uid://c7fdeqtyswfiw" path="res://scenes/Water Animation/water_line.gdshader" id="3_c4jig"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_e88jc"]
+noise_type = 2
+frequency = 0.001
+cellular_distance_function = 2
+cellular_jitter = 1.11
+domain_warp_enabled = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gkolw"]
+noise = SubResource("FastNoiseLite_e88jc")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6qh68"]
+shader = ExtResource("3_c4jig")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_gkolw")
+shader_parameter/speed = Vector2(0.5, 0.2)
+shader_parameter/distortion = 0.01
+
+[sub_resource type="Gradient" id="Gradient_c4jig"]
+colors = PackedColorArray(0.69041634, 0.7934268, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e88jc"]
+gradient = SubResource("Gradient_c4jig")
+fill_from = Vector2(0.5504587, 1)
+fill_to = Vector2(0.48623854, 0)
+
+[node name="WaterLine" type="Node2D" unique_id=1682058558]
+script = ExtResource("1_6sbtt")
+water_point = ExtResource("2_jp3bm")
+targetHeight = 162.0
+
+[node name="Water" type="Polygon2D" parent="." unique_id=1796528302]
+material = SubResource("ShaderMaterial_6qh68")
+texture = SubResource("GradientTexture2D_e88jc")

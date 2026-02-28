@@ -11,8 +11,9 @@ config_version=5
 [application]
 
 config/name="campfire"
-
-run/main_scene="uid://btp34snx4867x"
+run/main_scene="uid://7ufbquqts1m1"
+config/features=PackedStringArray("4.6", "GL Compatibility")
+config/icon="res://icon.svg"
 
 [debug]
 
@@ -54,6 +55,7 @@ right={
 
 2d_physics/layer_1="surface"
 2d_physics/layer_2="obstacles"
+2d_physics/layer_3="fish"
 
 [physics]
 

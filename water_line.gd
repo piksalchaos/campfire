@@ -2,9 +2,11 @@ extends Node2D
 
 @export_category("Water Line")
 @export var water_point: PackedScene
-@export var spread: float = 0.002
+@export var spread: float = 0.0002
 @export var waterDepth: float = 1000
 @export_category("Water Spring")
+@export var amountWaterNode: int = 5
+@export var springOffset: float = 50
 @export var targetHeight: float
 @export var springConst: float = 0.0015
 @export var dampConst: float = 0.03
@@ -13,13 +15,16 @@ extends Node2D
 
 
 var springs: Array = []
-var passes: int = 8
+var passes: int = 7
 
 
 func addWater(amount: int, offset: float) -> void:
 	var offsetX: float = 0
 	while (amount):
 		var water: Area2D = water_point.instantiate()
+		water.targetHeight = targetHeight
+		water.springConst = springConst
+		water.dampConst = dampConst
 		water.parent = self
 		water.position.x += offsetX
 		add_child(water)
@@ -28,12 +33,11 @@ func addWater(amount: int, offset: float) -> void:
 		amount -= 1
 
 func _ready() -> void:
-	addWater(10, 100)
+	addWater(amountWaterNode, springOffset)
 	
 	for child: Variant in get_children():
 		if child is Area2D:
 			springs.append(child)
-	splash(10, 5)
 	
 func _physics_process(_delta: float) -> void:
 	var lDelta: Array
@@ -50,7 +54,7 @@ func _physics_process(_delta: float) -> void:
 				springs[i - 1].velocity += lDelta[i] 
 			if i < springs.size() - 1:
 				rDelta[i] = spread * (springs[i].position.y - springs[i + 1].position.y)
-				springs[i - 1].velocity += rDelta[i]
+				springs[i + 1].velocity += rDelta[i]
 	drawWater()
 
 func splash(index: int, speed: float) -> void:

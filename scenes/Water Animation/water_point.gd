@@ -17,3 +17,7 @@ func HookesLaw(springConstant: float, dampling: float) -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta: float) -> void:
 	HookesLaw(springConst, dampConst)
+
+
+func _on_area_entered(area: Area2D) -> void:
+	velocity =+ area.velocity.y / 100
