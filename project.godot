@@ -54,6 +54,7 @@ right={
 [layer_names]
 
 2d_physics/layer_1="surface"
+2d_physics/layer_2="obstacles"
 
 [physics]
 

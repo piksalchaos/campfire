@@ -6,6 +6,10 @@
 
 [node name="Main" type="Node2D" unique_id=1149912898]
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1741744691]
+offset = Vector2(288, 162)
+zoom = Vector2(2, 2)
+
 [node name="Fish" parent="." unique_id=1033757198 instance=ExtResource("1_o5qli")]
 position = Vector2(234, 217)
 
@@ -24,7 +28,3 @@ offset_right = 576.0
 offset_bottom = 324.0
 grow_horizontal = 2
 color = Color(0, 0.72156864, 0.8745098, 0.2)
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1741744691]
-offset = Vector2(288, 162)
-zoom = Vector2(2, 2)
