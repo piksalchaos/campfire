@@ -12,9 +12,11 @@ void vertex() {
 
 void fragment() {
 	
-	vec2 noise = 2.0 * texture(noise_texture, UV + (speed * TIME)).rg - vec2(1);
+	vec2 noise = 1.0 * texture(noise_texture, UV + (speed * TIME)).rg - vec2(1);
 	
 	COLOR = texture(TEXTURE, UV);
 	
 	COLOR *= texture(screen_texture, SCREEN_UV - (noise * distortion));
+	
+	COLOR *= vec4(2, 2, 2, 1);
 }
