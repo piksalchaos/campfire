@@ -8,6 +8,10 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="campfire"
@@ -53,9 +57,10 @@ right={
 
 [layer_names]
 
-2d_physics/layer_1="surface"
+2d_physics/layer_1="waterSurface"
 2d_physics/layer_2="obstacles"
 2d_physics/layer_3="fish"
+2d_physics/layer_4="ground"
 
 [physics]
 

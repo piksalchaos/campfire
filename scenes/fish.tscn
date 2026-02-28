@@ -1,12 +1,14 @@
 [gd_scene format=3 uid="uid://b1kqhr7lj2yhe"]
 
-[ext_resource type="Script" path="res://scenes/fish.gd" id="1_8g0i4"]
+[ext_resource type="Script" uid="uid://bhlvdnye1y3av" path="res://scenes/fish.gd" id="1_8g0i4"]
 [ext_resource type="Texture2D" uid="uid://d24flshc876yk" path="res://assets/images/fish.png" id="1_n6yr6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8g0i4"]
 height = 45.0
 
 [node name="Fish" type="CharacterBody2D" unique_id=516323297]
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_8g0i4")
 
 [node name="TempSprite2D" type="Sprite2D" parent="." unique_id=218355167]
@@ -17,16 +19,24 @@ rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_8g0i4")
 
 [node name="SurfaceDetector" type="Area2D" parent="." unique_id=671967967]
-collision_mask = 9
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SurfaceDetector" unique_id=1250885138]
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_8g0i4")
 
-[connection signal="area_entered" from="SurfaceDetector" to="." method="_on_surface_detector_area_entered"]
-[connection signal="area_exited" from="SurfaceDetector" to="." method="_on_surface_detector_area_exited"]
+[node name="GroundDetector" type="Area2D" parent="." unique_id=1929658026]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundDetector" unique_id=1287231033]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_8g0i4")
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1849971290]
 zoom = Vector2(1.755, 1.755)
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
-[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="area_entered" from="SurfaceDetector" to="." method="_on_surface_detector_area_entered"]
+[connection signal="area_exited" from="SurfaceDetector" to="." method="_on_surface_detector_area_exited"]
+[connection signal="area_entered" from="GroundDetector" to="." method="_on_ground_detector_area_entered"]
+[connection signal="area_exited" from="GroundDetector" to="." method="_on_ground_detector_area_exited"]

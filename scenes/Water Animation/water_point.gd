@@ -18,6 +18,6 @@ func HookesLaw(springConstant: float, dampling: float) -> void:
 func _physics_process(_delta: float) -> void:
 	HookesLaw(springConst, dampConst)
 
-
-func _on_area_entered(area: Area2D) -> void:
-	velocity =+ area.velocity.y / 100
+func _on_body_entered(body: Node2D) -> void:
+	if body is CharacterBody2D:
+		velocity =+ body.velocity.y / 100

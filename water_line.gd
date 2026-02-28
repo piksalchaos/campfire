@@ -13,7 +13,6 @@ extends Node2D
 
 @onready var waterPoly: Polygon2D = $Water
 
-
 var springs: Array = []
 var passes: int = 7
 
