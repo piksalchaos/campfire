@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 [gd_scene format=3 uid="uid://dgrc6g1qf4oi5"]
 
 [ext_resource type="Script" uid="uid://c30gj15u87e5o" path="res://scenes/water_line.gd" id="1_6sbtt"]
@@ -10,3 +11,8 @@ water_point = ExtResource("2_jp3bm")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1649639249]
 
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=448836198]
+=======
+[gd_scene format=3 uid="uid://btp34snx4867x"]
+
+[node name="WaterLine" type="Node2D" unique_id=847125539]
+>>>>>>> Stashed changes
