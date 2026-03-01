@@ -78,7 +78,7 @@ charge={
 2d_physics/layer_2="obstacles"
 2d_physics/layer_3="fish"
 2d_physics/layer_4="ground"
-2d_physics/layer_5="enemies"
+2d_physics/layer_5="Climable"
 
 [physics]
 
