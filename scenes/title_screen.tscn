@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://d4a77wghiburn"]
 
 [ext_resource type="Texture2D" uid="uid://cxverr0r1wqk5" path="res://assets/bubble.png" id="1_fgkus"]
+[ext_resource type="Script" uid="uid://c2uv5pai24dhg" path="res://scenes/title_screen.gd" id="1_mgrm8"]
 [ext_resource type="Texture2D" uid="uid://baword7oiltpd" path="res://assets/LogoWater.png" id="1_s4lrb"]
 [ext_resource type="Texture2D" uid="uid://cp8q7pkoxlnk7" path="res://assets/Button.png" id="1_sa3yf"]
+[ext_resource type="Texture2D" uid="uid://bgo6ok31negdi" path="res://assets/water_animation/Water Animation.png" id="5_dc4i4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_redmh"]
 atlas = ExtResource("1_s4lrb")
@@ -267,8 +269,80 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_mykxm"]
+atlas = ExtResource("5_dc4i4")
+region = Rect2(0, 0, 100, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tklts"]
+atlas = ExtResource("5_dc4i4")
+region = Rect2(100, 0, 100, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u26n3"]
+atlas = ExtResource("5_dc4i4")
+region = Rect2(200, 0, 100, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ib7db"]
+atlas = ExtResource("5_dc4i4")
+region = Rect2(300, 0, 100, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frs5l"]
+atlas = ExtResource("5_dc4i4")
+region = Rect2(400, 0, 100, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mynnq"]
+atlas = ExtResource("5_dc4i4")
+region = Rect2(500, 0, 100, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8tpv"]
+atlas = ExtResource("5_dc4i4")
+region = Rect2(600, 0, 100, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4qe4i"]
+atlas = ExtResource("5_dc4i4")
+region = Rect2(700, 0, 100, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p07av"]
+atlas = ExtResource("5_dc4i4")
+region = Rect2(800, 0, 100, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_khjys"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mykxm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tklts")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u26n3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ib7db")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_frs5l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mynnq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e8tpv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4qe4i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p07av")
+}],
+"loop": false,
+"name": &"default",
+"speed": 8.0
+}]
+
 [node name="TitleScreen" type="CanvasLayer" unique_id=1584515081]
 layer = 5
+script = ExtResource("1_mgrm8")
 
 [node name="Control" type="Control" parent="." unique_id=791214434]
 layout_mode = 3
@@ -367,6 +441,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1145.0
 offset_bottom = 638.0
+mouse_filter = 2
 
 [node name="Bubbles" type="AnimatedSprite2D" parent="Control2" unique_id=916511788]
 position = Vector2(182, 62)
@@ -374,4 +449,37 @@ scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_mykxm")
 animation = &"bubble"
 autoplay = "bubble"
-frame_progress = 0.43071398
+
+[node name="Bubbles2" type="AnimatedSprite2D" parent="Control2" unique_id=2016093410]
+position = Vector2(1014, 495.00003)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_mykxm")
+animation = &"bubble"
+autoplay = "bubble"
+frame = 2
+
+[node name="Bubbles3" type="AnimatedSprite2D" parent="Control2" unique_id=1449660801]
+position = Vector2(178, 468)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_mykxm")
+animation = &"bubble"
+autoplay = "bubble"
+frame = 4
+
+[node name="Bubbles4" type="AnimatedSprite2D" parent="Control2" unique_id=1346679379]
+position = Vector2(946, 101)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_mykxm")
+animation = &"bubble"
+autoplay = "bubble"
+frame = 6
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1392331708]
+visible = false
+position = Vector2(576, 324)
+scale = Vector2(13, 13)
+sprite_frames = SubResource("SpriteFrames_khjys")
+
+[connection signal="pressed" from="Control/Main Menu/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Control/Main Menu/Quit" to="." method="_on_quit_pressed"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

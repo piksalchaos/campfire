@@ -19,7 +19,10 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-16, 152, -8, 200, 80, 
 
 [node name="Main" type="Node2D" unique_id=1149912898]
 
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=234990562]
+
 [node name="World" type="Node2D" parent="." unique_id=1361869755]
+visible = false
 
 [node name="Surface" type="Area2D" parent="World" unique_id=289272672]
 
