@@ -54,6 +54,7 @@ func _physics_process(delta: float) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("charge") and not is_in_air():
+		print('sdfsf')
 		is_charging = true
 		charge_bar.show()
 		msec_charging_started = Time.get_ticks_msec()

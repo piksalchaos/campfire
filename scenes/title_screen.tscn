@@ -9,6 +9,13 @@
 [ext_resource type="Texture2D" uid="uid://blmsxq58itwp1" path="res://assets/map/hill.png" id="4_tklts"]
 [ext_resource type="Texture2D" uid="uid://bgo6ok31negdi" path="res://assets/water_animation/Water Animation.png" id="5_dc4i4"]
 
+[sub_resource type="Gradient" id="Gradient_0ld40"]
+colors = PackedColorArray(0.2637845, 0.3125289, 0.38076746, 1, 0.36862746, 0.48235294, 0.64705884, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cs5ya"]
+gradient = SubResource("Gradient_0ld40")
+fill_from = Vector2(1, 1)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_redmh"]
 atlas = ExtResource("1_s4lrb")
 region = Rect2(0, 0, 1152, 648)
@@ -355,6 +362,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=325403900]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_cs5ya")
+
 [node name="HBoxContainer" type="HBoxContainer" parent="Control" unique_id=416829635]
 layout_mode = 1
 anchors_preset = 15
@@ -382,16 +399,6 @@ texture = ExtResource("3_mykxm")
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("4_tklts")
-
-[node name="ColorRect" type="ColorRect" parent="Control" unique_id=130624014]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.24234316, 0.23440188, 0.20526215, 1)
 
 [node name="TileMapContainer" type="Control" parent="Control" unique_id=1071210706]
 layout_mode = 1

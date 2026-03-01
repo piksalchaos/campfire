@@ -20,6 +20,13 @@
 [ext_resource type="AudioStream" uid="uid://p86yx6arjvey" path="res://sfx/Swimming_sfx_clean.ogg" id="17_y6deb"]
 [ext_resource type="AudioStream" uid="uid://6dhaitdj8s87" path="res://sfx/Swimming_sfx_underwater.ogg" id="18_og1vs"]
 
+[sub_resource type="Gradient" id="Gradient_0ld40"]
+colors = PackedColorArray(0.2637845, 0.3125289, 0.38076746, 1, 0.36862746, 0.48235294, 0.64705884, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gqmmt"]
+gradient = SubResource("Gradient_0ld40")
+fill_from = Vector2(1, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dp3eg"]
 bg_color = Color(0.2788, 0.30736, 0.34, 1)
 corner_radius_top_left = 12
@@ -55,6 +62,18 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedIn
 outlines = Array[PackedVector2Array]([PackedVector2Array(24, 0, 160, 152, 320, 184, 536, 192, 776, 104, 840, 0), PackedVector2Array(1336, -208, 1384, -168, 1528, -144, 1608, -144, 1696, -168, 1720, -208)])
 
 [node name="Main" type="Node2D" unique_id=1149912898]
+
+[node name="Background" type="CanvasLayer" parent="." unique_id=1641128805]
+layer = -4
+
+[node name="TextureRect" type="TextureRect" parent="Background" unique_id=546457208]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_gqmmt")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=234990562]
 script = ExtResource("1_0ld40")
