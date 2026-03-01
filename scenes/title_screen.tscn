@@ -311,7 +311,7 @@ scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_ycxnk")
 animation = &"logo"
 autoplay = "logo"
-frame_progress = 0.102407396
+frame_progress = 0.94062686
 
 [node name="Play" type="TextureButton" parent="Control/Main Menu" unique_id=820466509]
 layout_mode = 2
@@ -356,7 +356,7 @@ offset_right = 1145.0
 offset_bottom = 638.0
 
 [node name="Bubbles" type="AnimatedSprite2D" parent="Control2" unique_id=916511788]
-position = Vector2(182, 62)
+position = Vector2(846.00006, 296)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_mykxm")
 animation = &"bubble"
