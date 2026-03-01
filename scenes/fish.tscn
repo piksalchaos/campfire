@@ -36,6 +36,16 @@ shape = SubResource("CapsuleShape2D_8g0i4")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1849971290]
 zoom = Vector2(1.755, 1.755)
 
+[node name="ChargeBar" type="ProgressBar" parent="." unique_id=1681179193]
+visible = false
+offset_left = -26.0
+offset_top = -38.0
+offset_right = 27.0
+offset_bottom = -26.0
+max_value = 1.0
+step = 0.001
+show_percentage = false
+
 [connection signal="area_entered" from="SurfaceDetector" to="." method="_on_surface_detector_area_entered"]
 [connection signal="area_exited" from="SurfaceDetector" to="." method="_on_surface_detector_area_exited"]
 [connection signal="area_entered" from="GroundDetector" to="." method="_on_ground_detector_area_entered"]

@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bk8bgx2x8tr3v"]
+
+[ext_resource type="Script" uid="uid://3f51wdk14jcd" path="res://scenes/water_splash_particles.gd" id="1_fvjqw"]
+
+[sub_resource type="Curve" id="Curve_ws6ma"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="WaterSplashParticles" type="CPUParticles2D" unique_id=192791112]
+emitting = false
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+direction = Vector2(0, -1)
+spread = 93.57
+gravity = Vector2(0, 400)
+initial_velocity_min = 99.21
+initial_velocity_max = 99.21
+scale_amount_min = 10.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_ws6ma")
+script = ExtResource("1_fvjqw")
+
+[connection signal="finished" from="." to="." method="_on_finished"]
