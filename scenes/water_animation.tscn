@@ -1,0 +1,78 @@
+[gd_scene load_steps=12 format=3 uid="uid://cqiu52wk2edyn"]
+
+[ext_resource type="Texture2D" uid="uid://c3ku54rwffhae" path="res://assets/Water Animation.png" id="1_gvtek"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vd4c5"]
+atlas = ExtResource("1_gvtek")
+region = Rect2(0, 0, 100, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18xbg"]
+atlas = ExtResource("1_gvtek")
+region = Rect2(100, 0, 100, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4wbnn"]
+atlas = ExtResource("1_gvtek")
+region = Rect2(200, 0, 100, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3myo"]
+atlas = ExtResource("1_gvtek")
+region = Rect2(300, 0, 100, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6lp8"]
+atlas = ExtResource("1_gvtek")
+region = Rect2(400, 0, 100, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1sqa"]
+atlas = ExtResource("1_gvtek")
+region = Rect2(500, 0, 100, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7udkm"]
+atlas = ExtResource("1_gvtek")
+region = Rect2(600, 0, 100, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pig1m"]
+atlas = ExtResource("1_gvtek")
+region = Rect2(700, 0, 100, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8lg8m"]
+atlas = ExtResource("1_gvtek")
+region = Rect2(800, 0, 100, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_biy1m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vd4c5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18xbg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4wbnn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n3myo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w6lp8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y1sqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7udkm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pig1m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8lg8m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Water_Animation" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_biy1m")
+frame_progress = 0.45099407
