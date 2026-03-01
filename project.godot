@@ -14,6 +14,17 @@ config/name="campfire"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
+<<<<<<< Updated upstream
+=======
+[audio]
+
+buses/default_bus_layout="uid://x7p22dxxwgs4"
+
+[autoload]
+
+SignalBus="*uid://cbguwqgf0qlpp"
+
+>>>>>>> Stashed changes
 [debug]
 
 gdscript/warnings/untyped_declaration=1

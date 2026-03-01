@@ -1,20 +1,31 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=3 format=3 uid="uid://dt7g8uc1kmigq"]
 
 [ext_resource type="AudioStream" uid="uid://bq2vmecu1gggs" path="res://Music/BgMusicClean.ogg" id="1_ibx2e"]
 [ext_resource type="AudioStream" uid="uid://cpmh6asccecik" path="res://Music/BgMusic.ogg" id="1_qnihg"]
+=======
+[gd_scene format=3 uid="uid://dt7g8uc1kmigq"]
 
-[node name="Music" type="Node"]
+[ext_resource type="AudioStream" uid="uid://dvm7fthpdw3yd" path="res://Music/WaterMusic.ogg" id="1_ibx2e"]
+[ext_resource type="AudioStream" uid="uid://mtt4vfjmlfp4" path="res://Music/WaterMusicClean.mp3" id="2_qnihg"]
+>>>>>>> Stashed changes
 
-[node name="Music_Underwater" type="AudioStreamPlayer" parent="."]
+[node name="Music" type="Node" unique_id=1849589713]
+
+[node name="Music_Underwater" type="AudioStreamPlayer" parent="." unique_id=70753308]
 unique_name_in_owner = true
 stream = ExtResource("1_qnihg")
 volume_db = 3.0
 playback_type = 1
 parameters/looping = true
 
-[node name="Music_Clean" type="AudioStreamPlayer" parent="."]
+[node name="Music_Clean" type="AudioStreamPlayer" parent="." unique_id=1604500656]
 unique_name_in_owner = true
+<<<<<<< Updated upstream
 stream = ExtResource("1_ibx2e")
 volume_db = 3.0
+=======
+stream = ExtResource("2_qnihg")
+>>>>>>> Stashed changes
 playback_type = 1
 parameters/looping = true
