@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://nivdn77fd0cv"]
+
+[ext_resource type="Texture2D" uid="uid://cp64owxip8wd0" path="res://assets/bucket/Bucket.png" id="1_ojsi1"]
+[ext_resource type="Texture2D" uid="uid://dunvvegs5xt1h" path="res://assets/bucket/Edge.png" id="2_axt1m"]
+[ext_resource type="Texture2D" uid="uid://bbhn6yxl6oq35" path="res://assets/bucket/Dirt.png" id="3_j3v7k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tefeu"]
+radius = 2.0
+
+[node name="Bucket" type="Node2D" unique_id=1821199399]
+
+[node name="Bucket" type="RigidBody2D" parent="." unique_id=1817391008]
+mass = 5.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bucket" unique_id=271301928]
+polygon = PackedVector2Array(-44, -16, -38, 28, 38, 28, 44, -16, 48, -16, 44, 32, -44, 32, -48, -16)
+
+[node name="Bucket" type="Sprite2D" parent="Bucket" unique_id=80709963]
+z_index = -2
+texture = ExtResource("1_ojsi1")
+
+[node name="Edge" type="Sprite2D" parent="Bucket" unique_id=1046586060]
+z_index = 3
+texture = ExtResource("2_axt1m")
+
+[node name="Dirt" type="Sprite2D" parent="Bucket" unique_id=1659741699]
+z_index = -2
+texture = ExtResource("3_j3v7k")
+
+[node name="Area2D" type="Area2D" parent="Bucket" unique_id=884470999]
+collision_mask = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bucket/Area2D" unique_id=2013095937]
+polygon = PackedVector2Array(-40, 12, -38, 28, 38, 28, 40, 14, -2, 6)
+
+[node name="Right Joint" type="RigidBody2D" parent="." unique_id=725287198]
+position = Vector2(46, -14)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right Joint" unique_id=953438977]
+shape = SubResource("CircleShape2D_tefeu")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Right Joint" unique_id=1603143935]
+node_a = NodePath("..")
+node_b = NodePath("../../Bucket")
+
+[node name="Left Joint" type="RigidBody2D" parent="." unique_id=842510416]
+position = Vector2(-46, -14)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left Joint" unique_id=1207330770]
+shape = SubResource("CircleShape2D_tefeu")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Left Joint" unique_id=1404277947]
+node_a = NodePath("..")
+node_b = NodePath("../../Bucket")

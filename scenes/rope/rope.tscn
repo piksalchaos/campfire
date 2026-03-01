@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://chthwvakv7elk"]
+
+[ext_resource type="Script" uid="uid://cuoxfylmbeo74" path="res://scenes/rope/rope.gd" id="1_dp2b7"]
+[ext_resource type="PackedScene" uid="uid://dih1wg4ppeyei" path="res://scenes/rope/rope_piece.tscn" id="1_icxtj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jwjki"]
+
+[node name="Rope" type="Node2D" unique_id=845272975]
+script = ExtResource("1_dp2b7")
+ropePieces = ExtResource("1_icxtj")
+amountRopeNode = 10
+
+[node name="Fix" type="StaticBody2D" parent="." unique_id=530450670]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fix" unique_id=1948949876]
+shape = SubResource("CircleShape2D_jwjki")

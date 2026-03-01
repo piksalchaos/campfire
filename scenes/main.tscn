@@ -1,13 +1,23 @@
 [gd_scene format=3 uid="uid://7ufbquqts1m1"]
 
 [ext_resource type="PackedScene" uid="uid://b1kqhr7lj2yhe" path="res://scenes/fish.tscn" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://btp34snx4867x" path="res://scenes/Water Animation/water_line.tscn" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://corr35wkjuwir" path="res://scenes/angler.tscn" id="4_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://b4iyn35r5pjxi" path="res://scenes/map.tscn" id="4_tbgi4"]
 [ext_resource type="Script" uid="uid://dab1k43at3hwo" path="res://scenes/particle_container.gd" id="5_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://chthwvakv7elk" path="res://scenes/rope/rope.tscn" id="6_tefeu"]
+[ext_resource type="PackedScene" uid="uid://nivdn77fd0cv" path="res://scenes/bucket.tscn" id="7_o6xl0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5qli"]
+size = Vector2(872, 200.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sugp2"]
+size = Vector2(400, 64)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_jyhfs"]
-vertices = PackedVector2Array(-4.203125, 162, 1679.3125, 162, 1260.0625, 294.7578, 996.8906, 438.28906, 535.9297, 493.9297, 87.38281, 446.71094, 1.7109375, 197.49219)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(0, 2, 3, 4, 5, 6)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-16, 152, -8, 200, 80, 456, 536, 504, 1000, 448, 1264, 304, 1744, 152)])
+vertices = PackedVector2Array(769.28906, 95.796875, 534.3906, 181.92969, 321.21094, 174.03906, 165.21875, 142.84375, 46.367188, 10, 822.10156, 10, 1689.5, -176.59375, 1606.6484, -154, 1528.7969, -154, 1388.3203, -177.40625, 1363.6172, -198, 1702.3516, -198)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(6, 7, 8, 9, 10, 11)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(24, 0, 160, 152, 320, 184, 536, 192, 776, 104, 840, 0), PackedVector2Array(1336, -208, 1384, -168, 1528, -144, 1608, -144, 1696, -168, 1720, -208)])
 
 [node name="Main" type="Node2D" unique_id=1149912898]
 
@@ -15,39 +25,75 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-16, 152, -8, 200, 80, 
 
 [node name="World" type="Node2D" parent="." unique_id=1361869755]
 
+[node name="Liquid" type="Area2D" parent="World" unique_id=289272672]
+
+[node name="Pond" type="CollisionShape2D" parent="World/Liquid" unique_id=1966144368]
+position = Vector2(436, 99.75)
+shape = SubResource("RectangleShape2D_o5qli")
+
+[node name="PondWaterLine" parent="World/Liquid" unique_id=1682058558 instance=ExtResource("2_0wfyh")]
+position = Vector2(0, -0.25)
+waterDepth = 300.0
+amountWaterNode = 20
+targetHeight = 0.0
+
+[node name="TinyPond" type="CollisionShape2D" parent="World/Liquid" unique_id=1994103716]
+position = Vector2(1520, -176)
+shape = SubResource("RectangleShape2D_sugp2")
+
+[node name="TinyPondWaterLine" parent="World/Liquid" unique_id=159387499 instance=ExtResource("2_0wfyh")]
+position = Vector2(1320, -208)
+amountWaterNode = 9
+targetHeight = 0.0
+
 [node name="Fish" parent="World" unique_id=1033757198 instance=ExtResource("1_o5qli")]
-position = Vector2(234, 217)
+position = Vector2(234, 129)
 
-[node name="Camera" type="Camera2D" parent="World/Fish" unique_id=1741744691]
-zoom = Vector2(2, 2)
-position_smoothing_enabled = true
-
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="World" unique_id=1472764723]
+[node name="Angler" type="NavigationRegion2D" parent="World" unique_id=1472764723]
 navigation_polygon = SubResource("NavigationPolygon_jyhfs")
 
-[node name="angler" parent="World/NavigationRegion2D" unique_id=381709738 node_paths=PackedStringArray("Goal") instance=ExtResource("4_jyhfs")]
-position = Vector2(900, 214)
+[node name="angler" parent="World/Angler" unique_id=381709738 node_paths=PackedStringArray("Goal") instance=ExtResource("4_jyhfs")]
+position = Vector2(724, 38)
 Goal = NodePath("../../Fish")
 
-[node name="angler2" parent="World/NavigationRegion2D" unique_id=1958786324 node_paths=PackedStringArray("Goal") instance=ExtResource("4_jyhfs")]
-position = Vector2(900, 241)
+[node name="angler2" parent="World/Angler" unique_id=1958786324 node_paths=PackedStringArray("Goal") instance=ExtResource("4_jyhfs")]
+position = Vector2(724, 65)
 Goal = NodePath("../../Fish")
 
-[node name="angler3" parent="World/NavigationRegion2D" unique_id=1432443071 node_paths=PackedStringArray("Goal") instance=ExtResource("4_jyhfs")]
-position = Vector2(860, 214)
+[node name="angler3" parent="World/Angler" unique_id=1432443071 node_paths=PackedStringArray("Goal") instance=ExtResource("4_jyhfs")]
+position = Vector2(684, 38)
 Goal = NodePath("../../Fish")
 
-[node name="angler4" parent="World/NavigationRegion2D" unique_id=1371351866 node_paths=PackedStringArray("Goal") instance=ExtResource("4_jyhfs")]
-position = Vector2(416, 376)
+[node name="angler4" parent="World/Angler" unique_id=1371351866 node_paths=PackedStringArray("Goal") instance=ExtResource("4_jyhfs")]
+position = Vector2(416, 128)
 Goal = NodePath("../../Fish")
 
-[node name="angler5" parent="World/NavigationRegion2D" unique_id=1823126641 node_paths=PackedStringArray("Goal") instance=ExtResource("4_jyhfs")]
-position = Vector2(416, 403)
+[node name="angler5" parent="World/Angler" unique_id=1823126641 node_paths=PackedStringArray("Goal") instance=ExtResource("4_jyhfs")]
+position = Vector2(416, 155)
 Goal = NodePath("../../Fish")
 
-[node name="angler6" parent="World/NavigationRegion2D" unique_id=1069825264 node_paths=PackedStringArray("Goal") instance=ExtResource("4_jyhfs")]
-position = Vector2(376, 376)
+[node name="angler6" parent="World/Angler" unique_id=1069825264 node_paths=PackedStringArray("Goal") instance=ExtResource("4_jyhfs")]
+position = Vector2(376, 128)
 Goal = NodePath("../../Fish")
 
 [node name="ParticleContainer" type="Node2D" parent="World" unique_id=1384236135]
 script = ExtResource("5_tbgi4")
+
+[node name="map" parent="." unique_id=428981173 instance=ExtResource("4_tbgi4")]
+position = Vector2(516, -1304)
+scale = Vector2(4, 4)
+
+[node name="LeftRope" parent="." unique_id=845272975 node_paths=PackedStringArray("attachedPoint") instance=ExtResource("6_tefeu")]
+position = Vector2(1888, -144)
+attachedPoint = NodePath("../Bucket/Left Joint")
+amountRopeNode = 5
+
+[node name="RightRope" parent="." unique_id=1168839471 node_paths=PackedStringArray("attachedPoint") instance=ExtResource("6_tefeu")]
+position = Vector2(2264, -168)
+attachedPoint = NodePath("../Bucket/Right Joint")
+amountRopeNode = 5
+
+[node name="Bucket" parent="." unique_id=1821199399 instance=ExtResource("7_o6xl0")]
+position = Vector2(2081, -48)
+
+[editable path="Bucket"]

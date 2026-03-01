@@ -19,5 +19,5 @@ func _physics_process(_delta: float) -> void:
 	HookesLaw(springConst, dampConst)
 
 func _on_body_entered(body: Node2D) -> void:
-	if body is CharacterBody2D:
-		velocity =+ body.velocity.y / 100
+	if body is RigidBody2D:
+		velocity =+ body.linear_velocity.y / 100

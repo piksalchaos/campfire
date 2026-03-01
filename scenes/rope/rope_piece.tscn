@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dih1wg4ppeyei"]
+
+[ext_resource type="Script" uid="uid://blihd2cpyb2ui" path="res://scenes/rope/rope_piece.gd" id="1_suity"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wmsjs"]
+radius = 2.0
+
+[node name="RopePiece" type="RigidBody2D" unique_id=931394382]
+collision_layer = 0
+collision_mask = 4
+mass = 0.5
+script = ExtResource("1_suity")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=417431095]
+shape = SubResource("CircleShape2D_wmsjs")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="." unique_id=421903674]
+node_a = NodePath("..")
+softness = 0.4

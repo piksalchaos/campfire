@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bk8bgx2x8tr3v"]
 
-[ext_resource type="Script" uid="uid://3f51wdk14jcd" path="res://scenes/water_splash_particles.gd" id="1_fvjqw"]
+[ext_resource type="Script" path="res://scenes/water_splash_particles.gd" id="1_fvjqw"]
 
 [sub_resource type="Curve" id="Curve_ws6ma"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]

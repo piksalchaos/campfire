@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends RigidBody2D
 
 const WATER_FRICTION: float = 300.0
 const GROUND_FRICTION: float = 1000.0
@@ -17,6 +17,9 @@ var squish_tween: Tween
 @onready var charge_bar: ProgressBar = $ChargeBar
 
 
+func _ready() -> void:
+	gravity_scale = 0
+
 func is_in_air() -> bool:
 	return not (surface_detector.has_overlapping_areas() or ground_detector.has_overlapping_areas())
 
@@ -24,27 +27,28 @@ func is_in_air() -> bool:
 func boost(milliseconds_charging: float) -> void:
 	var direction: Vector2 = (get_global_mouse_position() - global_position).normalized()
 	var speed: float = minf(milliseconds_charging, MAX_CHARGE_MS) * 0.5
-	velocity = direction * speed
-
+	linear_velocity = direction * speed
 
 func _physics_process(delta: float) -> void:
-	rotation = (get_global_mouse_position() - global_position).angle()
-	print(rotation)
+	var deltaRotion: float = (get_global_mouse_position() - global_position).angle() - rotation
+	angular_velocity = clampf(angular_velocity, -10.0, 10.0)
+	apply_torque_impulse(50 * deltaRotion)
+	print(angular_velocity)
 	fish_animation.set_flip_v(rotation > PI/2 or rotation < -PI/2)
 	
 	if is_charging:
 		charge_bar.value = float(Time.get_ticks_msec() - msec_charging_started) / MAX_CHARGE_MS
 	
 	if surface_detector.has_overlapping_areas():
-		velocity = velocity.move_toward(Vector2.ZERO, WATER_FRICTION * delta)
+		gravity_scale = 0
+		linear_velocity = linear_velocity.move_toward(Vector2.ZERO, WATER_FRICTION * delta)
 	elif ground_detector.has_overlapping_areas():
-		velocity = velocity.move_toward(Vector2.ZERO, GROUND_FRICTION * delta)
+		gravity_scale = 0
+		linear_velocity = linear_velocity.move_toward(Vector2.ZERO, GROUND_FRICTION * delta)
 	else:
-		velocity.x = move_toward(velocity.x, 0, AIR_FRICTION/3 * delta)
-		velocity.y += GRAVITY * 2 * delta
-	
-	fish_animation.set_animation_speed_scale(velocity.length()/250)
-	move_and_slide()
+		linear_velocity.x = move_toward(linear_velocity.x, 0, AIR_FRICTION/3 * delta)
+		gravity_scale = 0.5
+		fish_animation.set_animation_speed_scale(linear_velocity.length()/250)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -68,18 +72,18 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _on_surface_detector_area_entered(_area: Area2D) -> void:
-	velocity.y = 200.0 
+	linear_velocity.y = 200.0 
 	SignalBus.water_splashed.emit(position)
 
 
 func _on_surface_detector_area_exited(_area: Area2D) -> void:
-	velocity.y -= 120.0
+	linear_velocity.y -= 120.0
 	SignalBus.water_splashed.emit(position)
 
 
 func _on_ground_detector_area_entered(_area: Area2D) -> void:
-	velocity.y = 100.0 
+	linear_velocity.y = 150.0 
 
 
 func _on_ground_detector_area_exited(_area: Area2D) -> void:
-	velocity.y -= 120.0
+	linear_velocity.y -= 120.0

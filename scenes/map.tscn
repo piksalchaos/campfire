@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://b4iyn35r5pjxi"]
+
+[ext_resource type="Texture2D" uid="uid://vf50rv3ak4nw" path="res://assets/map/pond.png" id="1_2lpho"]
+[ext_resource type="Texture2D" uid="uid://b4bf1wpslo0k1" path="res://assets/map/tiny_pond.png" id="2_nakos"]
+[ext_resource type="Texture2D" uid="uid://blmsxq58itwp1" path="res://assets/map/hill.png" id="3_jh32y"]
+[ext_resource type="Texture2D" uid="uid://dhywyqf8r6m72" path="res://assets/map/chasm.png" id="4_be0no"]
+[ext_resource type="Texture2D" uid="uid://dnt1gfj75jypg" path="res://assets/map/left_volcano.png" id="5_blm8a"]
+[ext_resource type="Texture2D" uid="uid://bng7e3pi7udr4" path="res://assets/map/left_lava.png" id="6_mlgqr"]
+[ext_resource type="Texture2D" uid="uid://dwn3y2kmecgov" path="res://assets/map/right_lava.png" id="7_mlgqr"]
+[ext_resource type="Texture2D" uid="uid://b00y8rioshn1k" path="res://assets/map/right_volcano.png" id="8_wslke"]
+[ext_resource type="Texture2D" uid="uid://bs03n8v7ae57w" path="res://assets/map/finished.png" id="9_gw3fx"]
+[ext_resource type="Texture2D" uid="uid://baktsp64bujdu" path="res://assets/map/extra.png" id="10_n1psn"]
+[ext_resource type="Texture2D" uid="uid://cw3weludof2cu" path="res://assets/map/cliff.png" id="11_c00ee"]
+[ext_resource type="Texture2D" uid="uid://5lk3r04u0na" path="res://assets/map/undersurfaces.png" id="12_wslke"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mlgqr"]
+friction = 100.0
+rough = true
+absorbent = true
+
+[node name="map" type="Node2D" unique_id=428981173]
+
+[node name="Pond" type="Sprite2D" parent="." unique_id=1465885350]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_2lpho")
+
+[node name="LittlePond" type="Sprite2D" parent="." unique_id=2037903952]
+position = Vector2(252, 0)
+texture = ExtResource("2_nakos")
+
+[node name="Hill" type="Sprite2D" parent="." unique_id=1264627458]
+position = Vector2(513, 0)
+texture = ExtResource("3_jh32y")
+
+[node name="Chasm" type="Sprite2D" parent="." unique_id=2098120042]
+position = Vector2(765, 0)
+texture = ExtResource("4_be0no")
+
+[node name="LeftVolcano" type="Sprite2D" parent="." unique_id=454134119]
+position = Vector2(1017, 0)
+texture = ExtResource("5_blm8a")
+
+[node name="LeftLava" type="Sprite2D" parent="." unique_id=1218037226]
+position = Vector2(1273, 0)
+texture = ExtResource("6_mlgqr")
+
+[node name="RightLava" type="Sprite2D" parent="." unique_id=1979086204]
+position = Vector2(1527, 0)
+texture = ExtResource("7_mlgqr")
+
+[node name="RightVolcano" type="Sprite2D" parent="." unique_id=792194119]
+position = Vector2(1781, 0)
+texture = ExtResource("8_wslke")
+
+[node name="Finish" type="Sprite2D" parent="." unique_id=74234552]
+position = Vector2(2035, 0)
+texture = ExtResource("9_gw3fx")
+
+[node name="Extra" type="Sprite2D" parent="." unique_id=1527795386]
+position = Vector2(2291, 0)
+texture = ExtResource("10_n1psn")
+
+[node name="Cliff" type="Sprite2D" parent="." unique_id=642114560]
+position = Vector2(2547, 0)
+texture = ExtResource("11_c00ee")
+
+[node name="UnderSurface" type="Sprite2D" parent="." unique_id=822216787]
+position = Vector2(1276, 640)
+texture = ExtResource("12_wslke")
+
+[node name="Bedrock" type="StaticBody2D" parent="." unique_id=1922571234]
+position = Vector2(0, 82)
+collision_layer = 2
+collision_mask = 4
+physics_material_override = SubResource("PhysicsMaterial_mlgqr")
+
+[node name="pond" type="CollisionPolygon2D" parent="Bedrock" unique_id=289892023]
+position = Vector2(0, -2)
+polygon = PackedVector2Array(-128, 320, -96, 342, -64, 350, -8, 342, 48, 326, 80, 302, 128, 270, 152, 230, 152, 206, 176, 190, 200, 190, 208, 214, 232, 230, 272, 230, 288, 222, 312, 206, 304, 190, 312, 182, 336, 198, 344, 212, 344, 226, 348, 240, 360, 248, 360, 256, 354, 262, 352, 270, 346, 284, 348, 298, 348, 306, 348, 318, 352, 326, 348, 338, 344, 356, 346, 374, 344, 392, 350, 406, 360, 408, 368, 414, 368, 422, 364, 428, 360, 432, 350, 450, 346, 454, 342, 464, 336, 470, 318, 468, 298, 460, 280, 454, 262, 442, 242, 456, 228, 450, 216, 450, 212, 456, 208, 464, 200, 464, 178, 476, 170, 484, 170, 498, 176, 504, 170, 516, 158, 526, 152, 538, 146, 554, 138, 578, 132, 590, 132, 608, 156, 638, 188, 658, 294, 668, 426, 652, 636, 652, 752, 648, 770, 650, 778, 632, 788, 628, 800, 618, 804, 608, 816, 604, 822, 598, 830, 596, 836, 586, 846, 578, 850, 574, 860, 568, 858, 566, 860, 562, 872, 556, 874, 552, 876, 554, 880, 552, 884, 548, 892, 546, 902, 546, 904, 548, 918, 546, 926, 548, 932, 552, 936, 556, 938, 554, 940, 560, 944, 562, 958, 578, 964, 586, 964, 588, 966, 590, 970, 590, 972, 592, 974, 596, 978, 598, 984, 598, 984, 602, 990, 602, 994, 600, 1000.0133, 607.2793, 1004, 606, 1010, 608, 1020, 618, 1022, 624, 1018, 628, 1016, 634, 1016, 638, 1016, 642, 1040, 624, 1052, 618, 1064, 612, 1078, 610, 1086, 610, 1094, 612, 1110, 614, 1116, 618, 1118.2422, 618.1019, 1126, 626, 1136, 632, 1146, 636, 1150, 634, 1154, 634, 1158, 636, 1512, 636, 1862, 510, 1674, 440, 1644, 98, 2230, -386, 2626, 688, -74, 688, -128, 432)
+
+[node name="mound" type="CollisionPolygon2D" parent="Bedrock" unique_id=2145235768]
+position = Vector2(0, -82)
+polygon = PackedVector2Array(452, 338, 444, 312, 446, 290, 454, 278, 458, 252, 464, 232, 476, 232, 482, 230, 494, 220, 512, 216, 520, 204, 524, 200, 536, 180, 560, 172, 576, 172, 580, 176, 588, 176, 600.0211, 188.02104, 608, 200, 624.00635, 224.00945, 628, 236, 644, 248, 652, 260, 656, 272, 656, 340, 660.5082, 436.92682, 668, 448, 664, 464, 664, 484, 668, 492, 668, 500, 664, 512, 456, 512, 464, 498, 462, 470, 464, 450, 458, 426, 448, 416, 440, 412, 432, 400, 436, 384, 444, 376, 450, 370, 454, 358)
+
+[node name="VolcanoLip" type="CollisionPolygon2D" parent="Bedrock" unique_id=1536724406]
+polygon = PackedVector2Array(704, 430, 1068, 430, 1124, 374, 1124, 358, 1136, 338, 1164, 270, 1164, 238, 1160, 218, 1184, 142, 1168, 86, 1168, 54, 1160, 38, 1192, -18, 1184, -50, 1180, -78, 1208, -194, 1164, -218, 1104, -138, 1056, -82, 1024, 54, 980, 146, 908, 94, 888, 114, 924, 194, 896, 258, 856, 358, 932, 326, 956, 374, 928, 406, 792, 406, 792, 238, 832, 190, 832, 118, 780, 86, 724, 78, 688, 150, 688, 294)
+
+[node name="FloatingIsland" type="CollisionPolygon2D" parent="Bedrock" unique_id=1506533712]
+polygon = PackedVector2Array(1308, -126, 1516, -122, 1412, 430, 1328, 430)
+
+[node name="Mountain" type="CollisionPolygon2D" parent="Bedrock" unique_id=11800402]
+position = Vector2(0, -2)
+polygon = PackedVector2Array(1632, -174, 1624, -162, 1624, -142, 1620, -134, 1620, -114, 1624, -110, 1624, -102, 1620, -94, 1616, -86, 1612, -70, 1604, -62, 1604, -42, 1612, -34, 1612, -30, 1604, -22, 1596, -10, 1596, 14, 1608, 26, 1616, 30, 1608, 38, 1600, 46, 1600, 68, 1572, 358, 1612, 398, 1628, 398, 1660, 382, 1684, 358, 1700, 354, 1720, 338, 1792, 326, 1804, 330, 1836, 330, 1860, 334, 1900, 354, 1892, 374, 1884, 398, 1868, 406, 1828, 418, 1820, 410, 1840, 390, 1812, 378, 1784, 378, 1756, 382, 1784, 410, 1784, 418, 1756, 418, 1728, 414, 1716, 410, 1696, 418, 1668, 426, 1920, 426, 2668, 430, 2664, 398, 2668, 378, 2660, 362, 2660, 338, 2656, 318, 2648, 290, 2648, 234, 2640, 226, 2640, 186, 2652, 90, 2652, 62, 2640, 26, 2624, -34, 2624, -58, 2620, -62, 2624, -94, 2620, -106, 2616, -162, 2608, -182, 2616, -198, 2616, -214, 2608, -226, 2608, -238, 2592, -258, 2576, -258, 2564, -270, 2568, -334, 2548, -354, 2540, -382, 2528, -402, 2496, -418, 2168, -410, 2116, -314, 2028, -282, 1936, -106, 1804, 254, 1720, -114, 1680, -174)
+
+[node name="Ground" type="Area2D" parent="." unique_id=1374780881]
+collision_layer = 8
+collision_mask = 4
+
+[node name="Sedement" type="CollisionPolygon2D" parent="Ground" unique_id=763265369]
+polygon = PackedVector2Array(-128, 400, -96, 422, -64, 430, -8, 422, 48, 406, 128, 350, 152, 310, 152, 286, 146, 290, 138, 294, 132, 296, 126, 300, 120, 304, 104, 318, 82, 330, 70, 344, 66, 354, 42, 354, 36, 356, 32, 358, 28, 360, 26, 362, 22, 364, 14, 372, 8, 374, 4, 376, -4, 374, -10, 372, -16, 370, -36, 370, -44, 374, -52, 374, -58, 370, -68, 364, -82, 364, -88, 368, -92, 368, -104, 352, -118, 338, -120, 334, -124, 330, -128, 326)
+
+[node name="Sedement2" type="CollisionPolygon2D" parent="Ground" unique_id=1181777236]
+polygon = PackedVector2Array(200, 270, 206, 294, 232, 312, 272, 312, 290, 302, 314, 290, 304, 270, 296, 284, 280, 284, 272, 290, 252, 290, 236, 286, 216, 284, 212, 278, 206, 278)
+
+[node name="LeftSide" type="CollisionPolygon2D" parent="Ground" unique_id=113306025]
+polygon = PackedVector2Array(344, 292, 344, 306, 348, 320, 360, 328, 360, 336, 354, 342, 346, 364, 348, 378, 348, 398, 352, 406, 348, 418, 344, 436, 346, 454, 344, 472, 350, 486, 360, 488, 366, 494, 366, 502, 362, 506, 360, 512, 364, 512, 364, 508, 368, 502, 368, 494, 356, 478, 354, 464, 354, 442, 358, 436, 356, 426, 352, 420, 352, 406, 352, 400, 356, 394, 356, 384, 354, 380, 350, 370, 350, 354, 352, 348, 358, 344, 360, 340, 362, 334, 362, 324, 358, 318, 352, 310, 348, 308, 348, 300)
+
+[node name="RightSide" type="CollisionPolygon2D" parent="Ground" unique_id=1284583791]
+polygon = PackedVector2Array(464, 232, 472, 238, 480, 230, 492, 218, 504, 212, 516, 202, 520, 200, 530, 192, 524, 200, 520, 204, 512, 216, 494, 220, 458, 252, 454, 278, 446, 290, 444, 312, 452, 338, 454, 358, 458, 426, 464, 450, 462, 470, 464, 498, 456, 512, 456, 492, 448, 474, 452, 460, 452, 442, 450, 436, 450, 424, 448, 418, 440, 412, 444, 376, 442, 362, 440, 354, 436, 352, 434, 344, 434, 334, 438, 328, 438, 312, 436, 302, 436, 284, 444, 258, 452, 242)
