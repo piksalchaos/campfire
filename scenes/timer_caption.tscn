@@ -12,7 +12,7 @@ grow_vertical = 2
 script = ExtResource("1_upyro")
 
 [node name="Timer" type="Timer" parent="." unique_id=339040986]
-wait_time = 5.0
+wait_time = 12.0
 autostart = true
 
 [node name="caption" type="Label" parent="." unique_id=1765950738]
