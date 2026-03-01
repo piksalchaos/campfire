@@ -1,24 +1,32 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2eths0ulv1fp"]
+[gd_scene format=3 uid="uid://d2eths0ulv1fp"]
 
 [ext_resource type="AudioStream" uid="uid://cg6f6bwlskl5b" path="res://sfx/water_splash.wav" id="1_g4ugh"]
 [ext_resource type="AudioStream" uid="uid://ckgkt5k3if5wt" path="res://sfx/dunk_water.wav" id="2_wbsoo"]
 [ext_resource type="AudioStream" uid="uid://brk8jg5sbgji1" path="res://sfx/water_hit_8d.wav" id="3_kysc4"]
 [ext_resource type="AudioStream" uid="uid://bbv7of1gyv0ri" path="res://sfx/water_submerged.wav" id="4_sqrre"]
 [ext_resource type="AudioStream" uid="uid://b56hcet6ii5wa" path="res://sfx/water_click.wav" id="5_vnlhl"]
+[ext_resource type="AudioStream" uid="uid://p86yx6arjvey" path="res://sfx/Swimming_sfx_clean.ogg" id="6_kysc4"]
+[ext_resource type="AudioStream" uid="uid://6dhaitdj8s87" path="res://sfx/Swimming_sfx_underwater.ogg" id="7_sqrre"]
 
-[node name="Sfx" type="Node"]
+[node name="Sfx" type="Node" unique_id=886238359]
 
-[node name="Air_Land" type="AudioStreamPlayer" parent="."]
+[node name="Air_Land" type="AudioStreamPlayer" parent="." unique_id=832757219]
 stream = ExtResource("1_g4ugh")
 
-[node name="Death1" type="AudioStreamPlayer" parent="."]
+[node name="Death1" type="AudioStreamPlayer" parent="." unique_id=1887710018]
 stream = ExtResource("2_wbsoo")
 
-[node name="Death2" type="AudioStreamPlayer" parent="."]
+[node name="Death2" type="AudioStreamPlayer" parent="." unique_id=275349877]
 stream = ExtResource("3_kysc4")
 
-[node name="Submerged" type="AudioStreamPlayer" parent="."]
+[node name="Submerged" type="AudioStreamPlayer" parent="." unique_id=1944800285]
 stream = ExtResource("4_sqrre")
 
-[node name="Click" type="AudioStreamPlayer" parent="."]
+[node name="Click" type="AudioStreamPlayer" parent="." unique_id=107312073]
 stream = ExtResource("5_vnlhl")
+
+[node name="swimming_sfx_clean" type="AudioStreamPlayer" parent="." unique_id=1096538194]
+stream = ExtResource("6_kysc4")
+
+[node name="swimming_sfx_underwater" type="AudioStreamPlayer" parent="." unique_id=548581402]
+stream = ExtResource("7_sqrre")

@@ -1,10 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://d4a77wghiburn"]
+[gd_scene format=3 uid="uid://d4a77wghiburn"]
 
 [ext_resource type="Texture2D" uid="uid://cxverr0r1wqk5" path="res://assets/bubble.png" id="1_fgkus"]
+[ext_resource type="Texture2D" uid="uid://cp8q7pkoxlnk7" path="res://assets/Button.png" id="1_sa3yf"]
 
-[sub_resource type="Theme" id="Theme_1a2ex"]
-
-[sub_resource type="Theme" id="Theme_fgkus"]
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_sa3yf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sa3yf"]
 atlas = ExtResource("1_fgkus")
@@ -63,10 +62,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="TitleScreen" type="CanvasLayer"]
+[node name="TitleScreen" type="CanvasLayer" unique_id=1584515081]
 layer = 5
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." unique_id=791214434]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -74,7 +73,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="Control"]
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=130624014]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -83,7 +82,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.24234316, 0.23440188, 0.20526215, 1)
 
-[node name="TileMapContainer" type="Control" parent="Control"]
+[node name="TileMapContainer" type="Control" parent="Control" unique_id=1071210706]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -91,7 +90,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Main Menu" type="VBoxContainer" parent="Control"]
+[node name="Main Menu" type="VBoxContainer" parent="Control" unique_id=1000495239]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -109,33 +108,49 @@ rotation = -0.0010442118
 theme_override_constants/separation = 10
 alignment = 2
 
-[node name="Logo" type="Control" parent="Control/Main Menu"]
+[node name="Logo" type="Control" parent="Control/Main Menu" unique_id=1262006169]
 custom_minimum_size = Vector2(300, 250)
 layout_mode = 2
 
-[node name="Play" type="Button" parent="Control/Main Menu"]
-unique_name_in_owner = true
+[node name="Play" type="TextureButton" parent="Control/Main Menu" unique_id=820466509]
 layout_mode = 2
-theme = SubResource("Theme_1a2ex")
-theme_override_colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
-theme_override_colors/font_pressed_color = Color(0.5561813, 0.6919578, 0.9476163, 1)
-theme_override_colors/font_hover_color = Color(0.2875212, 0.46905416, 0.83888257, 1)
+action_mode = 0
+texture_normal = ExtResource("1_sa3yf")
+texture_pressed = SubResource("AnimatedTexture_sa3yf")
+
+[node name="Label" type="Label" parent="Control/Main Menu/Play" unique_id=943858941]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 39
 text = "Play"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Quit" type="Button" parent="Control/Main Menu"]
-unique_name_in_owner = true
+[node name="Quit" type="TextureButton" parent="Control/Main Menu" unique_id=444968468]
 layout_mode = 2
-theme = SubResource("Theme_fgkus")
-theme_override_colors/font_pressed_color = Color(0.5568628, 0.6901961, 0.9490196, 1)
-theme_override_colors/font_hover_color = Color(0.28627452, 0.47058824, 0.8392157, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+action_mode = 0
+texture_normal = ExtResource("1_sa3yf")
+
+[node name="Label" type="Label" parent="Control/Main Menu/Quit" unique_id=1103905095]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 39
 text = "Quit"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Bubbles" type="AnimatedSprite2D" parent="."]
+[node name="Bubbles" type="AnimatedSprite2D" parent="." unique_id=916511788]
 position = Vector2(977, 166.00002)
 scale = Vector2(10, 10)
 sprite_frames = SubResource("SpriteFrames_mykxm")
 animation = &"bubble"
+autoplay = "bubble"
 frame_progress = 0.43071398
