@@ -4,4 +4,6 @@ extends Node
 signal water_splashed(position: Vector2)
 signal submerged_in_water
 signal exited_water
+signal submerged_in_mud
+signal exited_mud
 signal boosted

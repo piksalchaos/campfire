@@ -7,7 +7,7 @@ func _ready() -> void:
 	SignalBus.water_splashed.connect(new_water_splash_particles)
 
 
-func new_water_splash_particles(position: Vector2) -> void:
+func new_water_splash_particles(new_position: Vector2) -> void:
 	var particles: CPUParticles2D = WATER_SPLASH_PARTICLES.instantiate()
-	particles.position = position
+	particles.position = new_position
 	add_child(particles)

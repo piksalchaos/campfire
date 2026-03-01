@@ -360,23 +360,28 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -36.0
+offset_top = -1186.0
+offset_right = 80.0
+offset_bottom = 214.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 0
 
 [node name="TextureRect" type="TextureRect" parent="Control/HBoxContainer" unique_id=1902582508]
 layout_mode = 2
+size_flags_horizontal = 3
 texture = ExtResource("2_cs5ya")
 
 [node name="TextureRect2" type="TextureRect" parent="Control/HBoxContainer" unique_id=477656457]
 layout_mode = 2
+size_flags_horizontal = 3
 texture = ExtResource("3_mykxm")
 
 [node name="TextureRect3" type="TextureRect" parent="Control/HBoxContainer" unique_id=2069105577]
 layout_mode = 2
+size_flags_horizontal = 3
 texture = ExtResource("4_tklts")
-
-[node name="TextureRect4" type="TextureRect" parent="Control/HBoxContainer" unique_id=1970292988]
-layout_mode = 2
 
 [node name="ColorRect" type="ColorRect" parent="Control" unique_id=130624014]
 visible = false
