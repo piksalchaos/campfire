@@ -1,6 +1,5 @@
 extends RigidBody2D
 
-const MAX_SPEED: float = 200.0
 const WATER_FRICTION: float = 300.0
 const GROUND_FRICTION: float = 1000.0
 const AIR_FRICTION: float = 100.0
@@ -10,8 +9,9 @@ const MAX_CHARGE_MS: int = 800
 
 var is_charging: bool = false
 var msec_charging_started: float
+var squish_tween: Tween
 
-@onready var temp_sprite_2d: Sprite2D = $TempSprite2D
+@onready var fish_animation: Node2D = $FishAnimation
 @onready var surface_detector: Area2D = $SurfaceDetector
 @onready var ground_detector: Area2D = $GroundDetector
 @onready var charge_bar: ProgressBar = $ChargeBar
@@ -34,7 +34,7 @@ func _physics_process(delta: float) -> void:
 	angular_velocity = clampf(angular_velocity, -10.0, 10.0)
 	apply_torque_impulse(50 * deltaRotion)
 	print(angular_velocity)
-	temp_sprite_2d.flip_v = rotation > PI/2 or rotation < -PI/2
+	fish_animation.set_flip_v(rotation > PI/2 or rotation < -PI/2)
 	
 	if is_charging:
 		charge_bar.value = float(Time.get_ticks_msec() - msec_charging_started) / MAX_CHARGE_MS
@@ -48,6 +48,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		linear_velocity.x = move_toward(linear_velocity.x, 0, AIR_FRICTION/3 * delta)
 		gravity_scale = 0.5
+	fish_animation.set_animation_speed_scale(velocity.length()/250)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -55,10 +56,19 @@ func _unhandled_input(event: InputEvent) -> void:
 		is_charging = true
 		charge_bar.show()
 		msec_charging_started = Time.get_ticks_msec()
+		squish_tween = get_tree().create_tween()
+		squish_tween.tween_property(fish_animation, "scale", Vector2(0.8, 1.2), float(MAX_CHARGE_MS)/1000) \
+				.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 	if event.is_action_released("charge") and is_charging:
 		is_charging = false
 		charge_bar.hide()
 		boost(Time.get_ticks_msec() - msec_charging_started)
+		squish_tween.stop()
+		var tween: Tween = get_tree().create_tween()
+		tween.tween_property(fish_animation, "scale", Vector2(1.1, 0.85), 0.2) \
+				.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+		tween.tween_property(fish_animation, "scale", Vector2(1, 1), 0.2) \
+				.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
 
 
 func _on_surface_detector_area_entered(_area: Area2D) -> void:

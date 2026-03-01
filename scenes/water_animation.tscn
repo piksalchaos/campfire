@@ -73,6 +73,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Water_Animation" type="AnimatedSprite2D"]
+[node name="Water_Animation" type="AnimatedSprite2D" unique_id=546631343]
 sprite_frames = SubResource("SpriteFrames_biy1m")
+autoplay = "default"
 frame_progress = 0.45099407

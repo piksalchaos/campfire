@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b1kqhr7lj2yhe"]
 
 [ext_resource type="Script" uid="uid://bhlvdnye1y3av" path="res://scenes/fish.gd" id="1_8g0i4"]
-[ext_resource type="Texture2D" uid="uid://d24flshc876yk" path="res://assets/images/fish.png" id="1_n6yr6"]
+[ext_resource type="PackedScene" uid="uid://c5ww5112x08tm" path="res://scenes/fish_animation.tscn" id="3_nub35"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8g0i4"]
 rough = true
@@ -17,8 +17,7 @@ collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_8g0i4")
 script = ExtResource("1_8g0i4")
 
-[node name="TempSprite2D" type="Sprite2D" parent="." unique_id=218355167]
-texture = ExtResource("1_n6yr6")
+[node name="FishAnimation" parent="." unique_id=577370334 instance=ExtResource("3_nub35")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1342683776]
 rotation = 1.5707964
