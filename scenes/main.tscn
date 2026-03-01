@@ -1,16 +1,8 @@
 [gd_scene format=3 uid="uid://7ufbquqts1m1"]
 
 [ext_resource type="PackedScene" uid="uid://b1kqhr7lj2yhe" path="res://scenes/fish.tscn" id="1_o5qli"]
-[ext_resource type="PackedScene" uid="uid://c8peox5fq02m3" path="res://scenes/ground_poly.tscn" id="1_sugp2"]
-[ext_resource type="PackedScene" uid="uid://btp34snx4867x" path="res://scenes/Water Animation/water_line.tscn" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://corr35wkjuwir" path="res://scenes/angler.tscn" id="4_jyhfs"]
 [ext_resource type="Script" uid="uid://dab1k43at3hwo" path="res://scenes/particle_container.gd" id="5_tbgi4"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5qli"]
-size = Vector2(1768, 433)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sugp2"]
-size = Vector2(996, 265)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_jyhfs"]
 vertices = PackedVector2Array(-4.203125, 162, 1679.3125, 162, 1260.0625, 294.7578, 996.8906, 438.28906, 535.9297, 493.9297, 87.38281, 446.71094, 1.7109375, 197.49219)
@@ -22,44 +14,6 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-16, 152, -8, 200, 80, 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=234990562]
 
 [node name="World" type="Node2D" parent="." unique_id=1361869755]
-visible = false
-
-[node name="Surface" type="Area2D" parent="World" unique_id=289272672]
-
-[node name="Pond" type="CollisionShape2D" parent="World/Surface" unique_id=1966144368]
-position = Vector2(862, 368.5)
-shape = SubResource("RectangleShape2D_o5qli")
-
-[node name="PondWater" parent="World/Surface" unique_id=1682058558 instance=ExtResource("2_0wfyh")]
-position = Vector2(0, 152)
-waterDepth = 300.0
-amountWaterNode = 36
-targetHeight = 0.0
-
-[node name="ColorRect" type="ColorRect" parent="World/Surface" unique_id=1081598830]
-metadata/_edit_use_anchors_ = true
-
-[node name="Pond2" type="CollisionShape2D" parent="World/Surface" unique_id=1994103716]
-position = Vector2(3859, -267.5)
-shape = SubResource("RectangleShape2D_sugp2")
-
-[node name="WaterLine" parent="World/Surface" unique_id=159387499 instance=ExtResource("2_0wfyh")]
-position = Vector2(3364, -400)
-amountWaterNode = 20
-targetHeight = 0.0
-
-[node name="Bedrock" type="StaticBody2D" parent="World" unique_id=522973273]
-position = Vector2(0, 82)
-collision_layer = 2
-collision_mask = 4
-
-[node name="GroundPoly" parent="World/Bedrock" unique_id=1335533923 instance=ExtResource("1_sugp2")]
-
-[node name="Ground" type="Area2D" parent="World" unique_id=1585166992]
-collision_layer = 8
-collision_mask = 8
-
-[node name="Ground2" parent="World/Ground" unique_id=835303400 instance=ExtResource("1_sugp2")]
 
 [node name="Fish" parent="World" unique_id=1033757198 instance=ExtResource("1_o5qli")]
 position = Vector2(234, 217)
