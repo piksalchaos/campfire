@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-const MAX_SPEED: float = 200.0
 const WATER_FRICTION: float = 300.0
 const GROUND_FRICTION: float = 1000.0
 const AIR_FRICTION: float = 100.0
@@ -11,7 +10,7 @@ const MAX_CHARGE_MS: int = 800
 var is_charging: bool = false
 var msec_charging_started: float
 
-@onready var temp_sprite_2d: Sprite2D = $TempSprite2D
+@onready var fish_animation: Node2D = $FishAnimation
 @onready var surface_detector: Area2D = $SurfaceDetector
 @onready var ground_detector: Area2D = $GroundDetector
 @onready var charge_bar: ProgressBar = $ChargeBar
@@ -30,7 +29,7 @@ func boost(milliseconds_charging: float) -> void:
 func _physics_process(delta: float) -> void:
 	rotation = (get_global_mouse_position() - global_position).angle()
 	print(rotation)
-	temp_sprite_2d.flip_v = rotation > PI/2 or rotation < -PI/2
+	fish_animation.scale.y = -1 if (rotation > PI/2 or rotation < -PI/2) else 1
 	
 	if is_charging:
 		charge_bar.value = float(Time.get_ticks_msec() - msec_charging_started) / MAX_CHARGE_MS
@@ -43,6 +42,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, AIR_FRICTION/3 * delta)
 		velocity.y += GRAVITY * 2 * delta
 	
+	fish_animation.set_animation_speed_scale(velocity.length()/250)
 	move_and_slide()
 
 

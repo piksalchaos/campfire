@@ -2,28 +2,93 @@
 
 [ext_resource type="Script" uid="uid://bbrfrmchrgpf3" path="res://scenes/angler.gd" id="1_j7f32"]
 [ext_resource type="Script" uid="uid://bhw5fuaj1uob4" path="res://scenes/hit_box.gd" id="2_1s8qq"]
+[ext_resource type="Texture2D" uid="uid://dlglya0uwln6f" path="res://assets/images/angler_fish.png" id="3_l5yr8"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_mg6sp"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v33cm"]
+radius = 16.0
+height = 45.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_l5yr8"]
-radius = 30.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l5yr8"]
+radius = 20.0
+height = 60.0
+
+[sub_resource type="Animation" id="Animation_l5yr8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_v33cm"]
+resource_name = "boost_end"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.5),
+"transitions": PackedFloat32Array(0.48296863, 4.1410594, 1),
+"update": 0,
+"values": [Vector2(0.9, 1.1), Vector2(1.1, 0.9), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wc5h3"]
+resource_name = "boost_start"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.3077861, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.9, 1.1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xgml0"]
+_data = {
+&"RESET": SubResource("Animation_l5yr8"),
+&"boost_end": SubResource("Animation_v33cm"),
+&"boost_start": SubResource("Animation_wc5h3")
+}
 
 [node name="angler" type="CharacterBody2D" unique_id=381709738]
-collision_mask = 15
+collision_layer = 16
+collision_mask = 31
 script = ExtResource("1_j7f32")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1446064422]
-shape = SubResource("CircleShape2D_mg6sp")
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_v33cm")
+
+[node name="WaterDetector" type="Area2D" parent="." unique_id=1444347111]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterDetector" unique_id=1355426297]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_l5yr8")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=110264358]
 path_desired_distance = 3.0
 path_max_distance = 1000.0
-debug_enabled = true
 
 [node name="Timer" type="Timer" parent="." unique_id=66870281]
-wait_time = 0.5
+wait_time = 1.25
 one_shot = true
-autostart = true
 
 [node name="HitBox" type="Area2D" parent="." unique_id=1781333276]
 collision_layer = 0
@@ -31,7 +96,17 @@ collision_mask = 4
 script = ExtResource("2_1s8qq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=1812189564]
-shape = SubResource("CircleShape2D_l5yr8")
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_l5yr8")
 
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1965698364]
+texture = ExtResource("3_l5yr8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=150641367]
+libraries/ = SubResource("AnimationLibrary_xgml0")
+
+[connection signal="area_entered" from="WaterDetector" to="." method="_on_water_detector_area_entered"]
+[connection signal="area_exited" from="WaterDetector" to="." method="_on_water_detector_area_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="HitBox" to="HitBox" method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
