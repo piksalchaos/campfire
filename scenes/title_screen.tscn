@@ -98,10 +98,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -88.44862
-offset_top = -85.496635
-offset_right = 88.44862
-offset_bottom = 85.496635
+offset_left = -150.0
+offset_top = -179.0
+offset_right = 150.0
+offset_bottom = 179.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -0.0010442118
@@ -130,12 +130,13 @@ text = "Play"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Quit" type="TextureButton" parent="Control/Main Menu" unique_id=444968468]
+[node name="Quit" type="TextureButton" parent="Control/Main Menu" unique_id=1891959710]
 layout_mode = 2
 action_mode = 0
 texture_normal = ExtResource("1_sa3yf")
+texture_pressed = SubResource("AnimatedTexture_sa3yf")
 
-[node name="Label" type="Label" parent="Control/Main Menu/Quit" unique_id=1103905095]
+[node name="Label" type="Label" parent="Control/Main Menu/Quit" unique_id=382440637]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -148,8 +149,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Bubbles" type="AnimatedSprite2D" parent="." unique_id=916511788]
-position = Vector2(977, 166.00002)
-scale = Vector2(10, 10)
+position = Vector2(958.00006, 174)
+scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_mykxm")
 animation = &"bubble"
 autoplay = "bubble"
