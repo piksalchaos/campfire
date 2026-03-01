@@ -13,7 +13,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("FishFinFinal:rotation")
+tracks/0/path = NodePath("Sprites/FishFinFinal:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -25,7 +25,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("FishBotFin2:rotation")
+tracks/1/path = NodePath("Sprites/FishBotFin2:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -37,7 +37,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("FishBotFin1:rotation")
+tracks/2/path = NodePath("Sprites/FishBotFin1:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -54,7 +54,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("FishFinFinal:rotation")
+tracks/0/path = NodePath("Sprites/FishFinFinal:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -66,7 +66,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("FishBotFin2:rotation")
+tracks/1/path = NodePath("Sprites/FishBotFin2:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -78,7 +78,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("FishBotFin1:rotation")
+tracks/2/path = NodePath("Sprites/FishBotFin1:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -101,23 +101,25 @@ script = ExtResource("1_g0hbo")
 libraries/ = SubResource("AnimationLibrary_3nnnv")
 autoplay = &"swim"
 
-[node name="FishFinFinal" type="Sprite2D" parent="." unique_id=897294454]
+[node name="Sprites" type="Node2D" parent="." unique_id=1870254702]
+
+[node name="FishFinFinal" type="Sprite2D" parent="Sprites" unique_id=897294454]
 position = Vector2(-16, 5)
 scale = Vector2(0.9999998, 0.9999998)
 texture = ExtResource("2_dnxb2")
 offset = Vector2(16, -5)
 
-[node name="FishBody" type="Sprite2D" parent="." unique_id=2058749031]
+[node name="FishBody" type="Sprite2D" parent="Sprites" unique_id=2058749031]
 texture = ExtResource("3_g0hbo")
 
-[node name="FishEye" type="Sprite2D" parent="." unique_id=829859730]
+[node name="FishEye" type="Sprite2D" parent="Sprites" unique_id=829859730]
 texture = ExtResource("4_6y04d")
 
-[node name="FishBotFin1" type="Sprite2D" parent="." unique_id=1953115788]
+[node name="FishBotFin1" type="Sprite2D" parent="Sprites" unique_id=1953115788]
 texture = ExtResource("4_pfdv4")
 
-[node name="FishBotFin2" type="Sprite2D" parent="." unique_id=1257793891]
+[node name="FishBotFin2" type="Sprite2D" parent="Sprites" unique_id=1257793891]
 texture = ExtResource("5_g0hbo")
 
-[node name="FishTopFin" type="Sprite2D" parent="." unique_id=1242112724]
+[node name="FishTopFin" type="Sprite2D" parent="Sprites" unique_id=1242112724]
 texture = ExtResource("6_6y04d")
