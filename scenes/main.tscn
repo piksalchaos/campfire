@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://corr35wkjuwir" path="res://scenes/angler.tscn" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://b4iyn35r5pjxi" path="res://scenes/map.tscn" id="4_tbgi4"]
 [ext_resource type="Script" uid="uid://dab1k43at3hwo" path="res://scenes/particle_container.gd" id="5_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://chthwvakv7elk" path="res://scenes/rope/rope.tscn" id="6_tefeu"]
+[ext_resource type="PackedScene" uid="uid://nivdn77fd0cv" path="res://scenes/bucket.tscn" id="7_o6xl0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o5qli"]
 size = Vector2(872, 200.5)
@@ -13,9 +15,9 @@ size = Vector2(872, 200.5)
 size = Vector2(400, 64)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_jyhfs"]
-vertices = PackedVector2Array(769.28906, 95.796875, 534.3906, 181.92969, 321.21094, 174.03906, 165.21875, 142.84375, 46.367188, 10, 822.10156, 10)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(24, 0, 160, 152, 320, 184, 536, 192, 776, 104, 840, 0)])
+vertices = PackedVector2Array(769.28906, 95.796875, 534.3906, 181.92969, 321.21094, 174.03906, 165.21875, 142.84375, 46.367188, 10, 822.10156, 10, 1689.5, -176.59375, 1606.6484, -154, 1528.7969, -154, 1388.3203, -177.40625, 1363.6172, -198, 1702.3516, -198)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(6, 7, 8, 9, 10, 11)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(24, 0, 160, 152, 320, 184, 536, 192, 776, 104, 840, 0), PackedVector2Array(1336, -208, 1384, -168, 1528, -144, 1608, -144, 1696, -168, 1720, -208)])
 
 [node name="Main" type="Node2D" unique_id=1149912898]
 
@@ -41,13 +43,6 @@ shape = SubResource("RectangleShape2D_sugp2")
 position = Vector2(1320, -208)
 amountWaterNode = 9
 targetHeight = 0.0
-
-[node name="Ground" type="Area2D" parent="World" unique_id=1585166992]
-collision_layer = 8
-collision_mask = 8
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="World/Ground" unique_id=674319529]
-polygon = PackedVector2Array(88, 40, 144, 24, 120, -16, 96, 24)
 
 [node name="Fish" parent="World" unique_id=1033757198 instance=ExtResource("1_o5qli")]
 position = Vector2(234, 129)
@@ -79,8 +74,24 @@ Goal = NodePath("../../Fish")
 position = Vector2(376, 128)
 Goal = NodePath("../../Fish")
 
+[node name="ParticleContainer" type="Node2D" parent="World" unique_id=1384236135]
+script = ExtResource("5_tbgi4")
+
 [node name="map" parent="." unique_id=428981173 instance=ExtResource("4_tbgi4")]
 position = Vector2(516, -1304)
 scale = Vector2(4, 4)
-[node name="ParticleContainer" type="Node2D" parent="World" unique_id=1384236135]
-script = ExtResource("5_tbgi4")
+
+[node name="LeftRope" parent="." unique_id=845272975 node_paths=PackedStringArray("attachedPoint") instance=ExtResource("6_tefeu")]
+position = Vector2(1888, -144)
+attachedPoint = NodePath("../Bucket/Left Joint")
+amountRopeNode = 5
+
+[node name="RightRope" parent="." unique_id=1168839471 node_paths=PackedStringArray("attachedPoint") instance=ExtResource("6_tefeu")]
+position = Vector2(2264, -168)
+attachedPoint = NodePath("../Bucket/Right Joint")
+amountRopeNode = 5
+
+[node name="Bucket" parent="." unique_id=1821199399 instance=ExtResource("7_o6xl0")]
+position = Vector2(2081, -48)
+
+[editable path="Bucket"]

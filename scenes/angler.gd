@@ -21,5 +21,5 @@ func _on_timer_timeout() -> void:
 	timer.start()
 
 
-func _on_hit_box_body_entered(body: Node2D) -> void:
+func _on_hit_box_body_entered(_body: Node2D) -> void:
 	pass # Replace with function body.
