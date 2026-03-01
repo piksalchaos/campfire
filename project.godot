@@ -31,6 +31,10 @@ SignalBus="*uid://cbguwqgf0qlpp"
 gdscript/warnings/untyped_declaration=1
 gdscript/warnings/inferred_declaration=1
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [dotnet]
 
 project/assembly_name="campfire"

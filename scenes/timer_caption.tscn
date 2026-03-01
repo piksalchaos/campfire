@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://odqr6itgy3am"]
+
+[ext_resource type="Script" uid="uid://g04gqcf1lbmn" path="res://scripts/control.gd" id="1_upyro"]
+
+[node name="Control" type="Control" unique_id=1757099891]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_upyro")
+
+[node name="Timer" type="Timer" parent="." unique_id=339040986]
+wait_time = 5.0
+autostart = true
+
+[node name="caption" type="Label" parent="." unique_id=1765950738]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -16.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
