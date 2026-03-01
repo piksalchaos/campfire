@@ -59,10 +59,12 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _on_surface_detector_area_entered(_area: Area2D) -> void:
 	velocity.y = 200.0 
+	SignalBus.water_splashed.emit(position)
 
 
 func _on_surface_detector_area_exited(_area: Area2D) -> void:
 	velocity.y -= 120.0
+	SignalBus.water_splashed.emit(position)
 
 
 func _on_ground_detector_area_entered(_area: Area2D) -> void:
