@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://c68mf4c3422gf"]
+
+[node name="Bird" type="CharacterBody2D" unique_id=459566817]
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="." unique_id=635848868]
