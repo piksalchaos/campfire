@@ -1,4 +1,67 @@
-[gd_scene format=3 uid="uid://d4a77wghiburn"]
+[gd_scene load_steps=12 format=3 uid="uid://d4a77wghiburn"]
+
+[ext_resource type="Texture2D" uid="uid://cxverr0r1wqk5" path="res://assets/bubble.png" id="1_fgkus"]
+
+[sub_resource type="Theme" id="Theme_1a2ex"]
+
+[sub_resource type="Theme" id="Theme_fgkus"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sa3yf"]
+atlas = ExtResource("1_fgkus")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4lrb"]
+atlas = ExtResource("1_fgkus")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgrm8"]
+atlas = ExtResource("1_fgkus")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dc4i4"]
+atlas = ExtResource("1_fgkus")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e54dn"]
+atlas = ExtResource("1_fgkus")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3yumr"]
+atlas = ExtResource("1_fgkus")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cs5ya"]
+atlas = ExtResource("1_fgkus")
+region = Rect2(700, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mykxm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sa3yf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4lrb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgrm8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dc4i4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e54dn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3yumr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cs5ya")
+}],
+"loop": true,
+"name": &"bubble",
+"speed": 5.0
+}]
 
 [node name="TitleScreen" type="CanvasLayer"]
 layer = 5
@@ -53,11 +116,26 @@ layout_mode = 2
 [node name="Play" type="Button" parent="Control/Main Menu"]
 unique_name_in_owner = true
 layout_mode = 2
+theme = SubResource("Theme_1a2ex")
+theme_override_colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_colors/font_pressed_color = Color(0.5561813, 0.6919578, 0.9476163, 1)
+theme_override_colors/font_hover_color = Color(0.2875212, 0.46905416, 0.83888257, 1)
 theme_override_font_sizes/font_size = 39
 text = "Play"
 
 [node name="Quit" type="Button" parent="Control/Main Menu"]
 unique_name_in_owner = true
 layout_mode = 2
+theme = SubResource("Theme_fgkus")
+theme_override_colors/font_pressed_color = Color(0.5568628, 0.6901961, 0.9490196, 1)
+theme_override_colors/font_hover_color = Color(0.28627452, 0.47058824, 0.8392157, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 39
 text = "Quit"
+
+[node name="Bubbles" type="AnimatedSprite2D" parent="."]
+position = Vector2(977, 166.00002)
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_mykxm")
+animation = &"bubble"
+frame_progress = 0.43071398

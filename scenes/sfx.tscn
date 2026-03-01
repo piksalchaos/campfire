@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://d2eths0ulv1fp"]
+
+[ext_resource type="AudioStream" uid="uid://cg6f6bwlskl5b" path="res://sfx/water_splash.wav" id="1_g4ugh"]
+[ext_resource type="AudioStream" uid="uid://ckgkt5k3if5wt" path="res://sfx/dunk_water.wav" id="2_wbsoo"]
+[ext_resource type="AudioStream" uid="uid://brk8jg5sbgji1" path="res://sfx/water_hit_8d.wav" id="3_kysc4"]
+[ext_resource type="AudioStream" uid="uid://bbv7of1gyv0ri" path="res://sfx/water_submerged.wav" id="4_sqrre"]
+[ext_resource type="AudioStream" uid="uid://b56hcet6ii5wa" path="res://sfx/water_click.wav" id="5_vnlhl"]
+
+[node name="Sfx" type="Node"]
+
+[node name="Air_Land" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_g4ugh")
+
+[node name="Death1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_wbsoo")
+
+[node name="Death2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_kysc4")
+
+[node name="Submerged" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_sqrre")
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_vnlhl")
