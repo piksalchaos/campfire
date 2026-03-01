@@ -32,9 +32,9 @@ func boost(milliseconds_charging: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	var deltaRotion: float = (get_global_mouse_position() - global_position).angle() - rotation
-	angular_velocity = 0.0 if (angular_velocity == 8.0 || angular_velocity == -8.0) else clampf(angular_velocity, -10.0, 10.0)
+	angular_velocity = 0.0 if (angular_velocity >= 8.0 || angular_velocity <= -8.0) else clampf(angular_velocity, -10.0, 10.0)
 	apply_torque_impulse(50 * deltaRotion)
-	print(angular_velocity)
+	#print(angular_velocity)
 	fish_animation.set_flip_v(rotation > PI/2 or rotation < -PI/2)
 	
 	if is_charging:
@@ -49,7 +49,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		linear_velocity.x = move_toward(linear_velocity.x, 0, AIR_FRICTION/3 * delta)
 		gravity_scale = 0.5
-		fish_animation.set_animation_speed_scale(linear_velocity.length()/250)
+	fish_animation.set_animation_speed_scale(linear_velocity.length()/250)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -87,7 +87,9 @@ func _on_surface_detector_area_exited(_area: Area2D) -> void:
 
 func _on_ground_detector_area_entered(_area: Area2D) -> void:
 	linear_velocity.y = 150.0 
+	SignalBus.submerged_in_mud.emit()
 
 
 func _on_ground_detector_area_exited(_area: Area2D) -> void:
 	linear_velocity.y -= 120.0
+	SignalBus.exited_mud.emit()
