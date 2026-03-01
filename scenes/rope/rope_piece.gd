@@ -1,3 +1,4 @@
+class_name Rope
 extends RigidBody2D
 
 @export var connection: NodePath
