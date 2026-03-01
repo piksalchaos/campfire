@@ -1,17 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://dt7g8uc1kmigq"]
+[gd_scene format=3 uid="uid://dt7g8uc1kmigq"]
 
-[ext_resource type="AudioStream" uid="uid://bq2vmecu1gggs" path="res://Music/BgMusicClean.ogg" id="1_ibx2e"]
+[ext_resource type="AudioStream" uid="uid://mtt4vfjmlfp4" path="res://Music/WaterMusicClean.mp3" id="1_ibx2e"]
+[ext_resource type="AudioStream" uid="uid://dvm7fthpdw3yd" path="res://Music/WaterMusic.ogg" id="2_qnihg"]
 
-[node name="Music" type="Node"]
+[node name="music" type="Node" unique_id=736245150]
 
-[node name="Music_Underwater" type="AudioStreamPlayer" parent="."]
-unique_name_in_owner = true
+[node name="Bg_Clean" type="AudioStreamPlayer" parent="." unique_id=632539499]
 stream = ExtResource("1_ibx2e")
-playback_type = 1
-parameters/looping = true
+volume_db = -11.466
 
-[node name="Music_Clean" type="AudioStreamPlayer" parent="."]
-unique_name_in_owner = true
-stream = ExtResource("1_ibx2e")
-playback_type = 1
-parameters/looping = true
+[node name="Bg_Underwater" type="AudioStreamPlayer" parent="." unique_id=1847624905]
+stream = ExtResource("2_qnihg")
