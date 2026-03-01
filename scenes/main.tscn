@@ -12,7 +12,13 @@
 size = Vector2(872, 200.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sugp2"]
-size = Vector2(400, 64)
+size = Vector2(400, 152)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o6xl0"]
+size = Vector2(2440, 1944)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tipki"]
+size = Vector2(5706, 184)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_jyhfs"]
 vertices = PackedVector2Array(769.28906, 95.796875, 534.3906, 181.92969, 321.21094, 174.03906, 165.21875, 142.84375, 46.367188, 10, 822.10156, 10, 1689.5, -176.59375, 1606.6484, -154, 1528.7969, -154, 1388.3203, -177.40625, 1363.6172, -198, 1702.3516, -198)
@@ -25,18 +31,22 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(24, 0, 160, 152, 320, 1
 
 [node name="Liquid" type="Area2D" parent="World" unique_id=289272672]
 
+[node name="WaterLine" parent="World/Liquid" unique_id=1682058558 instance=ExtResource("2_0wfyh")]
+position = Vector2(1184, 1464)
+amountWaterNode = 250
+
 [node name="Pond" type="CollisionShape2D" parent="World/Liquid" unique_id=1966144368]
 position = Vector2(436, 99.75)
 shape = SubResource("RectangleShape2D_o5qli")
 
-[node name="PondWaterLine" parent="World/Liquid" unique_id=1682058558 instance=ExtResource("2_0wfyh")]
+[node name="PondWaterLine" parent="World/Liquid" unique_id=1102410266 instance=ExtResource("2_0wfyh")]
 position = Vector2(0, -0.25)
 waterDepth = 300.0
 amountWaterNode = 20
 targetHeight = 0.0
 
 [node name="TinyPond" type="CollisionShape2D" parent="World/Liquid" unique_id=1994103716]
-position = Vector2(1520, -176)
+position = Vector2(1520, -132)
 shape = SubResource("RectangleShape2D_sugp2")
 
 [node name="TinyPondWaterLine" parent="World/Liquid" unique_id=159387499 instance=ExtResource("2_0wfyh")]
@@ -44,10 +54,19 @@ position = Vector2(1320, -208)
 amountWaterNode = 9
 targetHeight = 0.0
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Liquid" unique_id=908522093]
+position = Vector2(6028, -204)
+shape = SubResource("RectangleShape2D_o6xl0")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="World/Liquid" unique_id=621793320]
+position = Vector2(4035, 1556)
+shape = SubResource("RectangleShape2D_tipki")
+
 [node name="Fish" parent="World" unique_id=1033757198 instance=ExtResource("1_o5qli")]
 position = Vector2(234, 129)
 
 [node name="Angler" type="NavigationRegion2D" parent="World" unique_id=1472764723]
+z_index = 2
 navigation_polygon = SubResource("NavigationPolygon_jyhfs")
 
 [node name="angler" parent="World/Angler" unique_id=381709738 node_paths=PackedStringArray("Goal") instance=ExtResource("4_jyhfs")]
@@ -75,6 +94,7 @@ position = Vector2(376, 128)
 Goal = NodePath("../../Fish")
 
 [node name="ParticleContainer" type="Node2D" parent="World" unique_id=1384236135]
+position = Vector2(1112, 1544)
 script = ExtResource("5_tbgi4")
 
 [node name="map" parent="." unique_id=428981173 instance=ExtResource("4_tbgi4")]
