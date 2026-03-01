@@ -7,6 +7,17 @@
 [ext_resource type="Script" uid="uid://dab1k43at3hwo" path="res://scenes/particle_container.gd" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://chthwvakv7elk" path="res://scenes/rope/rope.tscn" id="6_tefeu"]
 [ext_resource type="PackedScene" uid="uid://nivdn77fd0cv" path="res://scenes/bucket.tscn" id="7_o6xl0"]
+[ext_resource type="Script" uid="uid://c3ddn1pbj54a0" path="res://scenes/music.gd" id="8_ya4ey"]
+[ext_resource type="AudioStream" uid="uid://mtt4vfjmlfp4" path="res://Music/WaterMusicClean.mp3" id="9_eb6dy"]
+[ext_resource type="AudioStream" uid="uid://dvm7fthpdw3yd" path="res://Music/WaterMusic.ogg" id="10_trceg"]
+[ext_resource type="Script" uid="uid://5pkebr8m16fa" path="res://scenes/sfx.gd" id="11_dp3eg"]
+[ext_resource type="AudioStream" uid="uid://cg6f6bwlskl5b" path="res://sfx/water_splash.wav" id="12_0ld40"]
+[ext_resource type="AudioStream" uid="uid://ckgkt5k3if5wt" path="res://sfx/dunk_water.wav" id="13_gqmmt"]
+[ext_resource type="AudioStream" uid="uid://brk8jg5sbgji1" path="res://sfx/water_hit_8d.wav" id="14_yc10j"]
+[ext_resource type="AudioStream" uid="uid://bbv7of1gyv0ri" path="res://sfx/water_submerged.wav" id="15_jscy8"]
+[ext_resource type="AudioStream" uid="uid://b56hcet6ii5wa" path="res://sfx/water_click.wav" id="16_pm3ni"]
+[ext_resource type="AudioStream" uid="uid://p86yx6arjvey" path="res://sfx/Swimming_sfx_clean.ogg" id="17_y6deb"]
+[ext_resource type="AudioStream" uid="uid://6dhaitdj8s87" path="res://sfx/Swimming_sfx_underwater.ogg" id="18_og1vs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o5qli"]
 size = Vector2(872, 200.5)
@@ -95,5 +106,40 @@ amountRopeNode = 5
 
 [node name="Bucket" parent="." unique_id=1821199399 instance=ExtResource("7_o6xl0")]
 position = Vector2(2081, -48)
+
+[node name="music" type="Node" parent="." unique_id=736245150]
+script = ExtResource("8_ya4ey")
+
+[node name="Bg_Clean" type="AudioStreamPlayer" parent="music" unique_id=632539499]
+stream = ExtResource("9_eb6dy")
+volume_db = -11.466
+
+[node name="Bg_Underwater" type="AudioStreamPlayer" parent="music" unique_id=1847624905]
+stream = ExtResource("10_trceg")
+
+[node name="Sfx" type="Node" parent="." unique_id=886238359]
+script = ExtResource("11_dp3eg")
+
+[node name="Air_Land" type="AudioStreamPlayer" parent="Sfx" unique_id=832757219]
+stream = ExtResource("12_0ld40")
+
+[node name="Death1" type="AudioStreamPlayer" parent="Sfx" unique_id=1887710018]
+stream = ExtResource("13_gqmmt")
+
+[node name="Death2" type="AudioStreamPlayer" parent="Sfx" unique_id=275349877]
+stream = ExtResource("14_yc10j")
+
+[node name="Submerged" type="AudioStreamPlayer" parent="Sfx" unique_id=1944800285]
+stream = ExtResource("15_jscy8")
+
+[node name="Click" type="AudioStreamPlayer" parent="Sfx" unique_id=107312073]
+stream = ExtResource("16_pm3ni")
+volume_db = 3.296
+
+[node name="swimming_sfx_clean" type="AudioStreamPlayer" parent="Sfx" unique_id=1096538194]
+stream = ExtResource("17_y6deb")
+
+[node name="swimming_sfx_underwater" type="AudioStreamPlayer" parent="Sfx" unique_id=548581402]
+stream = ExtResource("18_og1vs")
 
 [editable path="Bucket"]

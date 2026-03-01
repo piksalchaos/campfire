@@ -29,9 +29,10 @@ func boost(milliseconds_charging: float) -> void:
 	var speed: float = minf(milliseconds_charging, MAX_CHARGE_MS) * 0.5
 	linear_velocity = direction * speed
 
+
 func _physics_process(delta: float) -> void:
 	var deltaRotion: float = (get_global_mouse_position() - global_position).angle() - rotation
-	angular_velocity = clampf(angular_velocity, -10.0, 10.0)
+	angular_velocity = 0.0 if (angular_velocity == 8.0 || angular_velocity == -8.0) else clampf(angular_velocity, -10.0, 10.0)
 	apply_torque_impulse(50 * deltaRotion)
 	print(angular_velocity)
 	fish_animation.set_flip_v(rotation > PI/2 or rotation < -PI/2)
@@ -60,6 +61,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		squish_tween.tween_property(fish_animation, "scale", Vector2(0.8, 1.2), float(MAX_CHARGE_MS)/1000) \
 				.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 	if event.is_action_released("charge") and is_charging:
+		SignalBus.boosted.emit()
 		is_charging = false
 		charge_bar.hide()
 		boost(Time.get_ticks_msec() - msec_charging_started)
@@ -74,11 +76,13 @@ func _unhandled_input(event: InputEvent) -> void:
 func _on_surface_detector_area_entered(_area: Area2D) -> void:
 	linear_velocity.y = 200.0 
 	SignalBus.water_splashed.emit(position)
+	SignalBus.submerged_in_water.emit()
 
 
 func _on_surface_detector_area_exited(_area: Area2D) -> void:
 	linear_velocity.y -= 120.0
 	SignalBus.water_splashed.emit(position)
+	SignalBus.exited_water.emit()
 
 
 func _on_ground_detector_area_entered(_area: Area2D) -> void:

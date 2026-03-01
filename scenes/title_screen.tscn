@@ -4,6 +4,9 @@
 [ext_resource type="Script" uid="uid://c2uv5pai24dhg" path="res://scenes/title_screen.gd" id="1_mgrm8"]
 [ext_resource type="Texture2D" uid="uid://baword7oiltpd" path="res://assets/LogoWater.png" id="1_s4lrb"]
 [ext_resource type="Texture2D" uid="uid://cp8q7pkoxlnk7" path="res://assets/Button.png" id="1_sa3yf"]
+[ext_resource type="Texture2D" uid="uid://vf50rv3ak4nw" path="res://assets/map/pond.png" id="2_cs5ya"]
+[ext_resource type="Texture2D" uid="uid://b4bf1wpslo0k1" path="res://assets/map/tiny_pond.png" id="3_mykxm"]
+[ext_resource type="Texture2D" uid="uid://blmsxq58itwp1" path="res://assets/map/hill.png" id="4_tklts"]
 [ext_resource type="Texture2D" uid="uid://bgo6ok31negdi" path="res://assets/water_animation/Water Animation.png" id="5_dc4i4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_redmh"]
@@ -352,7 +355,31 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="HBoxContainer" type="HBoxContainer" parent="Control" unique_id=416829635]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/HBoxContainer" unique_id=1902582508]
+layout_mode = 2
+texture = ExtResource("2_cs5ya")
+
+[node name="TextureRect2" type="TextureRect" parent="Control/HBoxContainer" unique_id=477656457]
+layout_mode = 2
+texture = ExtResource("3_mykxm")
+
+[node name="TextureRect3" type="TextureRect" parent="Control/HBoxContainer" unique_id=2069105577]
+layout_mode = 2
+texture = ExtResource("4_tklts")
+
+[node name="TextureRect4" type="TextureRect" parent="Control/HBoxContainer" unique_id=1970292988]
+layout_mode = 2
+
 [node name="ColorRect" type="ColorRect" parent="Control" unique_id=130624014]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
