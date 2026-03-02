@@ -14,6 +14,7 @@ var squish_tween: Tween
 @onready var fish_animation: Node2D = $FishAnimation
 @onready var surface_detector: Area2D = $SurfaceDetector
 @onready var ground_detector: Area2D = $GroundDetector
+@onready var climbable_detector: Area2D = $ClimbableDetector
 @onready var charge_bar: ProgressBar = $ChargeBar
 
 
@@ -21,7 +22,7 @@ func _ready() -> void:
 	gravity_scale = 0
 
 func is_in_air() -> bool:
-	return not (surface_detector.has_overlapping_areas() or ground_detector.has_overlapping_areas())
+	return not (surface_detector.has_overlapping_areas() or ground_detector.has_overlapping_areas() or climbable_detector.has_overlapping_areas())
 
 
 func boost(milliseconds_charging: float) -> void:
@@ -43,7 +44,7 @@ func _physics_process(delta: float) -> void:
 	if surface_detector.has_overlapping_areas():
 		gravity_scale = 0
 		linear_velocity = linear_velocity.move_toward(Vector2.ZERO, WATER_FRICTION * delta)
-	elif ground_detector.has_overlapping_areas():
+	elif ground_detector.has_overlapping_areas() or climbable_detector.has_overlapping_areas():
 		gravity_scale = 0
 		linear_velocity = linear_velocity.move_toward(Vector2.ZERO, GROUND_FRICTION * delta)
 	else:
@@ -94,3 +95,11 @@ func _on_ground_detector_area_entered(_area: Area2D) -> void:
 func _on_ground_detector_area_exited(_area: Area2D) -> void:
 	linear_velocity.y -= 120.0
 	SignalBus.exited_mud.emit()
+
+
+func _on_climbable_detector_area_entered(_area: Area2D) -> void:
+	SignalBus.climbable_entered.emit()
+
+
+func _on_climbable_detector_area_exited(_area: Area2D) -> void:
+	SignalBus.climbable_exited.emit()

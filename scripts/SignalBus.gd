@@ -6,4 +6,6 @@ signal submerged_in_water
 signal exited_water
 signal submerged_in_mud
 signal exited_mud
+signal climbable_entered
+signal climbable_exited
 signal boosted

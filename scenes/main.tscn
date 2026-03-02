@@ -57,9 +57,9 @@ size = Vector2(2440, 1944)
 size = Vector2(5706, 184)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_jyhfs"]
-vertices = PackedVector2Array(769.28906, 95.796875, 534.3906, 181.92969, 321.21094, 174.03906, 165.21875, 142.84375, 46.367188, 10, 822.10156, 10, 1689.5, -176.59375, 1606.6484, -154, 1528.7969, -154, 1388.3203, -177.40625, 1363.6172, -198, 1702.3516, -198)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(6, 7, 8, 9, 10, 11)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(24, 0, 160, 152, 320, 184, 536, 192, 776, 104, 840, 0), PackedVector2Array(1336, -208, 1384, -168, 1528, -144, 1608, -144, 1696, -168, 1720, -208)])
+vertices = PackedVector2Array(3650.6719, 1477.0078, 3531.9922, 1558.25, 3415.9219, 1530.9375, 1710.4297, 1563.9219, 1335.2109, 1535.2891, 1272.6875, 1477.9766, 1961.0313, 1516, 2434.8594, 1514, 2719.4688, 1509.8672, 2535.2578, 1531.8906, 2929.8125, 1554.9375, 769.28906, 95.796875, 534.3906, 181.92969, 321.21094, 174.03906, 165.21875, 142.84375, 46.367188, 10, 822.10156, 10, 1689.5, -176.59375, 1606.6484, -154, 1528.7969, -154, 1388.3203, -177.40625, 1363.6172, -198, 1702.3516, -198)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 5, 6), PackedInt32Array(7, 6, 5, 0, 8), PackedInt32Array(8, 9, 7), PackedInt32Array(8, 0, 2, 10), PackedInt32Array(11, 12, 13, 14, 15, 16), PackedInt32Array(17, 18, 19, 20, 21, 22)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(24, 0, 160, 152, 320, 184, 536, 192, 776, 104, 840, 0), PackedVector2Array(1336, -208, 1384, -168, 1528, -144, 1608, -144, 1696, -168, 1720, -208), PackedVector2Array(3683, 1467, 1247, 1468, 1331, 1545, 1711, 1574, 1962, 1526, 2434, 1524, 2535, 1542, 2719, 1520, 2929, 1565, 3415, 1541, 3534, 1569)])
 
 [node name="Main" type="Node2D" unique_id=1149912898]
 
@@ -112,13 +112,31 @@ text = "In Mud"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ClimbingLabel" type="PanelContainer" parent="CanvasLayer" unique_id=1649664593]
+visible = false
+offset_left = 11.0
+offset_top = 11.0
+offset_right = 178.0
+offset_bottom = 56.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_0ld40")
+
+[node name="Label" type="Label" parent="CanvasLayer/ClimbingLabel" unique_id=643147581]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.93, 0.86056006, 0.63240004, 1)
+theme_override_fonts/font = SubResource("FontVariation_dp3eg")
+theme_override_font_sizes/font_size = 32
+text = "Climbing"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="World" type="Node2D" parent="." unique_id=1361869755]
 
 [node name="Liquid" type="Area2D" parent="World" unique_id=289272672]
 
 [node name="WaterLine" parent="World/Liquid" unique_id=1682058558 instance=ExtResource("2_0wfyh")]
-position = Vector2(1184, 1464)
+position = Vector2(1177, 1464)
 amountWaterNode = 250
+targetHeight = 0.0
 
 [node name="Pond" type="CollisionShape2D" parent="World/Liquid" unique_id=1966144368]
 position = Vector2(436, 99.75)
@@ -150,6 +168,10 @@ shape = SubResource("RectangleShape2D_tipki")
 [node name="Fish" parent="World" unique_id=1033757198 instance=ExtResource("1_o5qli")]
 position = Vector2(234, 129)
 
+[node name="Camera2D" parent="World/Fish" index="5" unique_id=1849971290]
+limit_left = 0
+limit_bottom = 1750
+
 [node name="Angler" type="NavigationRegion2D" parent="World" unique_id=1472764723]
 z_index = 2
 navigation_polygon = SubResource("NavigationPolygon_jyhfs")
@@ -166,16 +188,60 @@ Goal = NodePath("../../Fish")
 position = Vector2(684, 38)
 Goal = NodePath("../../Fish")
 
-[node name="angler4" parent="World/Angler" unique_id=1371351866 node_paths=PackedStringArray("Goal") instance=ExtResource("4_jyhfs")]
-position = Vector2(416, 128)
+[node name="angler4" parent="World/Angler" unique_id=409398609 node_paths=PackedStringArray("Goal") instance=ExtResource("4_jyhfs")]
+position = Vector2(1584, -204)
 Goal = NodePath("../../Fish")
 
-[node name="angler5" parent="World/Angler" unique_id=1823126641 node_paths=PackedStringArray("Goal") instance=ExtResource("4_jyhfs")]
-position = Vector2(416, 155)
+[node name="angler5" parent="World/Angler" unique_id=1564956394 node_paths=PackedStringArray("Goal") instance=ExtResource("4_jyhfs")]
+position = Vector2(3620, 1428)
 Goal = NodePath("../../Fish")
 
-[node name="angler6" parent="World/Angler" unique_id=1069825264 node_paths=PackedStringArray("Goal") instance=ExtResource("4_jyhfs")]
-position = Vector2(376, 128)
+[node name="angler6" parent="World/Angler" unique_id=46419039 node_paths=PackedStringArray("Goal") instance=ExtResource("4_jyhfs")]
+position = Vector2(3593, 1399)
+Goal = NodePath("../../Fish")
+
+[node name="angler7" parent="World/Angler" unique_id=1796274613 node_paths=PackedStringArray("Goal") instance=ExtResource("4_jyhfs")]
+position = Vector2(3724, 1328)
+Goal = NodePath("../../Fish")
+
+[node name="angler8" parent="World/Angler" unique_id=1004326853 node_paths=PackedStringArray("Goal") instance=ExtResource("4_jyhfs")]
+position = Vector2(3487, 1338)
+Goal = NodePath("../../Fish")
+
+[node name="angler9" parent="World/Angler" unique_id=1494384246 node_paths=PackedStringArray("Goal") instance=ExtResource("4_jyhfs")]
+position = Vector2(3551, 1339)
+Goal = NodePath("../../Fish")
+
+[node name="angler10" parent="World/Angler" unique_id=392011295 node_paths=PackedStringArray("Goal") instance=ExtResource("4_jyhfs")]
+position = Vector2(3467, 1416)
+Goal = NodePath("../../Fish")
+
+[node name="angler11" parent="World/Angler" unique_id=1144009802 node_paths=PackedStringArray("Goal") instance=ExtResource("4_jyhfs")]
+position = Vector2(3474, 1383)
+Goal = NodePath("../../Fish")
+
+[node name="angler12" parent="World/Angler" unique_id=733015418 node_paths=PackedStringArray("Goal") instance=ExtResource("4_jyhfs")]
+position = Vector2(3634, 1367)
+Goal = NodePath("../../Fish")
+
+[node name="angler13" parent="World/Angler" unique_id=29131070 node_paths=PackedStringArray("Goal") instance=ExtResource("4_jyhfs")]
+position = Vector2(3682, 1387)
+Goal = NodePath("../../Fish")
+
+[node name="angler14" parent="World/Angler" unique_id=810074398 node_paths=PackedStringArray("Goal") instance=ExtResource("4_jyhfs")]
+position = Vector2(3543, 1380)
+Goal = NodePath("../../Fish")
+
+[node name="angler15" parent="World/Angler" unique_id=1345000555 node_paths=PackedStringArray("Goal") instance=ExtResource("4_jyhfs")]
+position = Vector2(3488, 1451)
+Goal = NodePath("../../Fish")
+
+[node name="angler16" parent="World/Angler" unique_id=682751139 node_paths=PackedStringArray("Goal") instance=ExtResource("4_jyhfs")]
+position = Vector2(3557, 1523)
+Goal = NodePath("../../Fish")
+
+[node name="angler17" parent="World/Angler" unique_id=1462140625 node_paths=PackedStringArray("Goal") instance=ExtResource("4_jyhfs")]
+position = Vector2(3554, 1471)
 Goal = NodePath("../../Fish")
 
 [node name="ParticleContainer" type="Node2D" parent="World" unique_id=1384236135]
@@ -233,4 +299,5 @@ stream = ExtResource("17_y6deb")
 [node name="swimming_sfx_underwater" type="AudioStreamPlayer" parent="Sfx" unique_id=548581402]
 stream = ExtResource("18_og1vs")
 
+[editable path="World/Fish"]
 [editable path="Bucket"]

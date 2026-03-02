@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b4iyn35r5pjxi"]
 
 [ext_resource type="Texture2D" uid="uid://vf50rv3ak4nw" path="res://assets/map/pond.png" id="1_2lpho"]
+[ext_resource type="Texture2D" uid="uid://c22je6b0a6cx2" path="res://assets/images/sign.png" id="1_gw3fx"]
 [ext_resource type="Texture2D" uid="uid://b4bf1wpslo0k1" path="res://assets/map/tiny_pond.png" id="2_nakos"]
 [ext_resource type="Texture2D" uid="uid://blmsxq58itwp1" path="res://assets/map/hill.png" id="3_jh32y"]
 [ext_resource type="Texture2D" uid="uid://dhywyqf8r6m72" path="res://assets/map/chasm.png" id="4_be0no"]
@@ -19,6 +20,20 @@ rough = true
 absorbent = true
 
 [node name="map" type="Node2D" unique_id=428981173]
+
+[node name="Sign" type="Sprite2D" parent="." unique_id=404717231]
+position = Vector2(576, 150)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_gw3fx")
+
+[node name="Label" type="Label" parent="Sign" unique_id=525746779]
+offset_left = -559.99994
+offset_top = -239.99997
+offset_right = 1204.0
+offset_bottom = -18.99997
+theme_override_font_sizes/font_size = 120
+text = "WIP, please
+don't  continue :("
 
 [node name="Pond" type="Sprite2D" parent="." unique_id=1465885350]
 scale = Vector2(0.5, 0.5)
@@ -76,7 +91,7 @@ physics_material_override = SubResource("PhysicsMaterial_mlgqr")
 
 [node name="pond" type="CollisionPolygon2D" parent="Bedrock" unique_id=289892023]
 position = Vector2(0, -2)
-polygon = PackedVector2Array(-128, 246, -92, 288, -74, 284, -44, 296, -24, 290, 4, 298, 38, 276, 66, 274, 86, 263, 120, 238, 148, 219, 150, 214, 160, 201, 176, 190, 200, 190, 212, 200, 234, 206, 252, 212, 276, 208, 294, 204, 304, 190, 312, 182, 336, 198, 344, 212, 344, 226, 348, 240, 360, 248, 360, 256, 354, 262, 352, 270, 346, 284, 348, 298, 348, 306, 348, 318, 352, 326, 348, 338, 344, 356, 346, 374, 344, 392, 350, 406, 360, 408, 368, 414, 368, 422, 364, 428, 360, 432, 350, 450, 344, 452, 338, 460, 332, 462, 316, 466, 298, 460, 280, 454, 262, 442, 242, 456, 228, 450, 216, 450, 212, 456, 208, 464, 200, 464, 178, 476, 170, 484, 170, 498, 176, 504, 170, 516, 158, 526, 152, 538, 146, 554, 138, 578, 132, 590, 132, 608, 156, 638, 188, 658, 294, 668, 426, 652, 636, 652, 752, 648, 770, 650, 778, 632, 788, 628, 800, 618, 804, 608, 816, 604, 822, 598, 830, 596, 836, 586, 846, 578, 850, 574, 860, 568, 858, 566, 860, 562, 872, 556, 874, 552, 876, 554, 880, 552, 884, 548, 892, 546, 902, 546, 904, 548, 918, 546, 926, 548, 932, 552, 936, 556, 938, 554, 940, 560, 944, 562, 958, 578, 964, 586, 964, 588, 966, 590, 970, 590, 972, 592, 974, 596, 978, 598, 984, 598, 984, 602, 990, 602, 994, 600, 1000.0133, 607.2793, 1004, 606, 1010, 608, 1020, 618, 1022, 624, 1018, 628, 1016, 634, 1016, 638, 1016, 642, 1040, 624, 1052, 618, 1064, 612, 1078, 610, 1086, 610, 1094, 612, 1110, 614, 1116, 618, 1118.2422, 618.1019, 1126, 626, 1136, 632, 1146, 636, 1150, 634, 1154, 634, 1158, 636, 1512, 636, 1862, 510, 1674, 440, 1644, 98, 2230, -386, 2626, 688, -74, 688, -128, 432)
+polygon = PackedVector2Array(-128, 246, -92, 288, -74, 284, -44, 296, -24, 290, 4, 298, 38, 276, 66, 274, 86, 263, 120, 238, 148, 219, 150, 214, 160, 201, 176, 190, 200, 190, 212, 200, 234, 206, 252, 212, 276, 208, 294, 204, 304, 190, 312, 182, 336, 198, 344, 212, 344, 226, 348, 240, 360, 248, 360, 256, 354, 262, 352, 270, 346, 284, 348, 298, 348, 306, 348, 318, 352, 326, 348, 338, 344, 356, 346, 374, 344, 392, 350, 406, 360, 408, 368, 414, 368, 422, 364, 428, 360, 432, 350, 450, 344, 452, 338, 460, 332, 462, 316, 466, 298, 460, 280, 454, 262, 442, 242, 456, 228, 450, 216, 450, 212, 456, 208, 464, 200, 464, 178, 476, 170, 484, 170, 498, 176, 504, 170, 516, 158, 526, 152, 538, 146, 554, 138, 578, 132, 590, 132, 608, 156, 638, 188, 658, 294, 668, 426, 652, 636, 652, 752, 648, 770, 650, 778, 632, 788, 628, 800, 618, 804, 608, 816, 604, 822, 598, 830, 596, 836, 586, 846, 578, 850, 574, 860, 568, 858, 566, 860, 562, 872, 556, 874, 552, 876, 554, 880, 552, 884, 548, 892, 546, 902, 546, 904, 548, 918, 546, 926, 548, 932, 552, 936, 556, 938, 554, 940, 560, 944, 562, 958, 578, 964, 586, 964, 588, 966, 590, 970, 590, 972, 592, 974, 596, 978, 598, 984, 598, 984, 602, 990, 602, 994, 600, 1000.0133, 607.2793, 1004, 606, 1010, 608, 1020, 618, 1022, 624, 1018, 628, 1016, 634, 1016, 638, 1016, 642, 1040, 624, 1052, 618, 1064, 612, 1078, 610, 1086, 610, 1094, 612, 1110, 614, 1116, 618, 1118.2422, 618.1019, 1126, 626, 1136, 632, 1146, 636, 1150, 634, 1154, 634, 1158, 636, 1512, 636, 1862, 510, 1674, 440, 1644, 98, 2230, -386, 2626, 688, -74, 688, -128, 432, -224, 6, -148, 24)
 
 [node name="mound" type="CollisionPolygon2D" parent="Bedrock" unique_id=2145235768]
 position = Vector2(0, -82)
@@ -108,3 +123,86 @@ collision_mask = 4
 
 [node name="LeftSide" type="CollisionPolygon2D" parent="Climbable" unique_id=113306025]
 polygon = PackedVector2Array(324, 552, 336, 552, 336, 698, 326, 700)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Climbable" unique_id=476665609]
+polygon = PackedVector2Array(548, 130, 546, 134, 546, 146, 544, 156, 570, 158, 570, 180, 576, 180, 578, 158, 600, 156, 602, 144, 602, 130, 566, 128)
+
+[node name="Labels" type="Node2D" parent="." unique_id=1453671195]
+
+[node name="Label" type="Label" parent="Labels" unique_id=1440576677]
+offset_left = -102.0
+offset_top = 332.0
+offset_right = 706.0
+offset_bottom = 453.0
+scale = Vector2(0.075, 0.075)
+theme_override_font_sizes/font_size = 64
+text = "Hold Left Mouse button
+to boost towards mouse"
+
+[node name="Label3" type="Label" parent="Labels" unique_id=2049040482]
+offset_left = -8.0
+offset_top = 338.0
+offset_right = 800.0
+offset_bottom = 459.0
+scale = Vector2(0.075, 0.075)
+theme_override_font_sizes/font_size = 64
+text = "avoid these fish!"
+
+[node name="Label4" type="Label" parent="Labels" unique_id=657746664]
+offset_left = 58.0
+offset_top = 298.0
+offset_right = 866.0
+offset_bottom = 419.0
+scale = Vector2(0.075, 0.075)
+theme_override_font_sizes/font_size = 64
+text = "you can boost in mud
+but not in the air :("
+
+[node name="Label5" type="Label" parent="Labels" unique_id=1345114033]
+offset_left = 112.0
+offset_top = 254.00002
+offset_right = 1286.0
+offset_bottom = 375.0
+scale = Vector2(0.075, 0.075)
+theme_override_font_sizes/font_size = 64
+text = "not all surfaces are boostable
+how can you get over this bump? :O"
+
+[node name="Label6" type="Label" parent="Labels" unique_id=1010495194]
+offset_left = 346.0
+offset_top = 232.0
+offset_right = 1520.0
+offset_bottom = 353.0
+scale = Vector2(0.075, 0.075)
+theme_override_font_sizes/font_size = 64
+text = "can you?
+fish in bucket?"
+
+[node name="Label7" type="Label" parent="Labels" unique_id=725291593]
+offset_left = 380.0
+offset_top = 376.0
+offset_right = 1554.0
+offset_bottom = 497.0
+scale = Vector2(0.075, 0.075)
+theme_override_font_sizes/font_size = 64
+text = "l bozo"
+
+[node name="Label8" type="Label" parent="Labels" unique_id=541546814]
+offset_left = 336.0
+offset_top = 684.0
+offset_right = 2107.0
+offset_bottom = 867.0
+scale = Vector2(0.075, 0.075)
+theme_override_font_sizes/font_size = 64
+text = "you can climb this vine, but like
+we have a bug where you cant switch from
+the vine to the mud so ur basically stuck here lmao"
+
+[node name="Label9" type="Label" parent="Labels" unique_id=1645101927]
+offset_left = 772.0
+offset_top = 656.0
+offset_right = 2543.0
+offset_bottom = 839.0
+scale = Vector2(0.075, 0.075)
+theme_override_font_sizes/font_size = 64
+text = "stop trying to leave bruh"
